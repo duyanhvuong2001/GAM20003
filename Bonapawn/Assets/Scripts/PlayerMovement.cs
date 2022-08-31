@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
         // anim = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(!walking)
         {
