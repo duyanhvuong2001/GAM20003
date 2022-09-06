@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private Vector3 moveToPosition;
 
+    public LayerMask MovementStop;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,13 +35,15 @@ public class PlayerMovement : MonoBehaviour
             }
             if(movement != Vector2.zero)
             {
+                if (!Physics2D.OverlapCircle(transform.position + new Vector3(movement.x, movement.y, 0), 0.2f, MovementStop))
+                {
+                    moveToPosition = transform.position + new Vector3(movement.x, movement.y, 0);
+                    // anim.SetFloat("X", movement.x);
+                    // anim.SetFloat("Y", movement.y);
+                    // anim.SetBool("walking", true)
 
-                moveToPosition = transform.position + new Vector3(movement.x, movement.y, 0);
-                // anim.SetFloat("X", movement.x);
-                // anim.SetFloat("Y", movement.y);
-                // anim.SetBool("walking", true)
-
-                StartCoroutine(Move(moveToPosition));
+                    StartCoroutine(Move(moveToPosition));
+                }
             }
 
             // anim.SetBool("walking", walking);   

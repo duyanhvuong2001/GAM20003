@@ -2109,7 +2109,7 @@ GameObject:
   - component: {fileID: 160017828}
   - component: {fileID: 160017832}
   - component: {fileID: 160017831}
-  m_Layer: 21
+  m_Layer: 18
   m_Name: Layer 2 - Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13026,6 +13026,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  MovementStop:
+    serializedVersion: 2
+    m_Bits: 262144
 --- !u!50 &641499273
 Rigidbody2D:
   serializedVersion: 4
@@ -21713,7 +21716,7 @@ GameObject:
   - component: {fileID: 1222015274}
   - component: {fileID: 1222015276}
   - component: {fileID: 1222015275}
-  m_Layer: 20
+  m_Layer: 18
   m_Name: Layer 1 - Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30543,7 +30546,7 @@ GameObject:
   - component: {fileID: 1774538523}
   - component: {fileID: 1774538522}
   - component: {fileID: 1774538521}
-  m_Layer: 22
+  m_Layer: 18
   m_Name: Layer 3 - Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
