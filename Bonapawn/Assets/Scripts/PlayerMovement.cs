@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if(movement != Vector2.zero)
             {
-                if (!Physics2D.OverlapCircle(transform.position + new Vector3(movement.x, movement.y, 0), 0.2f, MovementStop))
+                if (!Physics2D.OverlapCircle(transform.position + new Vector3(movement.x, movement.y, 0), 0.01f, MovementStop))
                 {
                     moveToPosition = transform.position + new Vector3(movement.x, movement.y, 0);
                     // anim.SetFloat("X", movement.x);
