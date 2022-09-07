@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerticalMoveBehaviour : MonoBehaviour
+public class VerticalMoveBehaviour : ChessBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public override List<Path> ExploreAvailablePaths(Vector3 currentPosition)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 }
