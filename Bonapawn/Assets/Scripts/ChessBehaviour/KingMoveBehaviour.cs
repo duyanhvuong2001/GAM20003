@@ -6,6 +6,17 @@ public class KingMoveBehaviour : ChessBehaviour
 {
     public override List<Path> ExploreAvailablePaths(Vector3 currentPosition)
     {
-        throw new System.NotImplementedException();
+       List<Path> availablePath = new List<Path>();
+       for(int i=-1;i<2;i++)
+        {
+            for(int j=-1;j<2;j++)
+            {
+                if (i != 0 || j != 0)
+                {
+                    Path path = new Path(new Vector3(i, j, 0));
+                    availablePath.Add(path);
+                }
+            }
+        }
     }
 }

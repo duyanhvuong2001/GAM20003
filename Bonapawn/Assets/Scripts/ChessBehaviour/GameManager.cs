@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     //References
-    public Vector3 playerPosition;
+    public Transform playerTransform;
 
     private void Awake()
     {

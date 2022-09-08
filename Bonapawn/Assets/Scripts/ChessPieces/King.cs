@@ -7,5 +7,6 @@ public class King : ChessPiece
     protected override void Awake()
     {
         base.Awake();
+        behaviours.Add(new KingMoveBehaviour());
     }
 }
