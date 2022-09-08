@@ -13,8 +13,7 @@ public abstract class ChessPiece : MonoBehaviour
     private Vector3 moveDelta;
 
     private Vector3 originalSize;
-    public float ySpeed = 0.5f;
-    public float xSpeed = 0.75f;
+    private float speed = 2f;
 
     //Protected properties 
     protected bool isAlive;
@@ -62,12 +61,7 @@ public abstract class ChessPiece : MonoBehaviour
     }
     protected void UpdatePosition(Vector3 destination)
     {
-        transform.position = Vector3.MoveTowards(transform.position, destination,Time.deltaTime);
-    }
-
-    private ENEMY_STATES Die()
-    {
-        return ENEMY_STATES.DIE;
+        transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
     }
 
     //Update function
@@ -87,7 +81,6 @@ public abstract class ChessPiece : MonoBehaviour
                 case ENEMY_STATES.WAIT:
                     if(Time.time - lastMove > moveCooldown)//If finished the cooldown
                     {
-                        lastMove = Time.time;
                         state = ENEMY_STATES.LOCATE_PLAYER;
                     }
                     else
@@ -121,6 +114,7 @@ public abstract class ChessPiece : MonoBehaviour
                     }
                     else
                     {
+                        lastMove = Time.time;
                         state = ENEMY_STATES.WAIT;
                     }
                     break;
