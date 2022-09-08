@@ -9,4 +9,7 @@ public class King : ChessPiece
         base.Awake();
         behaviours.Add(new KingMoveBehaviour());
     }
+
+
+
 }
