@@ -16,38 +16,131 @@ public abstract class ChessPiece : MonoBehaviour
     public float ySpeed = 0.5f;
     public float xSpeed = 0.75f;
 
-    //Protected properties
+    //Protected properties 
     protected bool isAlive;
+    protected ENEMY_STATES currentState;
+    protected int health = 5;
+    //Enemy logic
+    protected float lastMove;
+    protected float moveCooldown;
+    protected Vector3 playerCoordinates;
+    protected Path targetPosition;
 
     //Set-up Awake functions
     protected virtual void Awake()
     {
         originalSize = transform.localScale;
+        behaviours = new List<ChessBehaviour>();
         isAlive = true;
     }
 
-    protected void UpdatePosition(Vector3 input)
+    protected List<Path> FindPaths()
     {
-        //Reset moveDelta
-        moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0);
-
-        //Swap sprite direction
-        if (moveDelta.x > 0)
+        List<Path> paths = new List<Path>();
+        foreach(ChessBehaviour behaviour in behaviours)
         {
-            transform.localScale = originalSize;
+            paths.AddRange(behaviour.ExploreAvailablePaths(transform.position));
         }
-        else if (moveDelta.x < 0)
-        {
-            transform.localScale = new Vector3(-originalSize.x, originalSize.y, originalSize.z);
-        }
-
-        //Move the player
-        transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
-        transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+        return paths;
     }
 
-    public void Destroy()
+    protected Path FindOptimizedPath(List<Path> paths)
     {
-        Destroy(gameObject);
+        Path optimizedPath = null;
+        float shortestDistance = float.MaxValue;
+        for(int i=0;i<paths.Count;i++)
+        {
+            if (Vector3.Distance(paths[i].Location, playerCoordinates) < shortestDistance)
+            {
+                shortestDistance = Vector3.Distance(paths[i].Location, playerCoordinates);
+                optimizedPath = paths[i];
+                Debug.Log(shortestDistance);
+            }
+        }
+
+        return optimizedPath;
     }
+    protected void UpdatePosition(Vector3 destination)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, destination,Time.deltaTime);
+    }
+
+    private ENEMY_STATES Die()
+    {
+        return ENEMY_STATES.DIE;
+    }
+
+    //Update function
+
+    protected virtual void Update()
+    {
+        ENEMY_STATES state = currentState;
+        Debug.Log(state);
+        if (isAlive)
+        {
+            //Act based on current state
+            switch(state)
+            {
+                case ENEMY_STATES.DIE:
+                    isAlive = false;
+                    break;
+                case ENEMY_STATES.WAIT:
+                    if(Time.time - lastMove > moveCooldown)//If finished the cooldown
+                    {
+                        lastMove = Time.time;
+                        state = ENEMY_STATES.LOCATE_PLAYER;
+                    }
+                    else
+                    {
+                        state = ENEMY_STATES.WAIT;
+                    }
+                    break;
+                case ENEMY_STATES.LOCATE_PLAYER:
+                    playerCoordinates = GameManager.instance.playerTransform.position;
+                    state = ENEMY_STATES.FIND_PATH;
+                    break;
+                case ENEMY_STATES.FIND_PATH:
+                    //First find all possible paths
+                    List<Path> availablePaths = FindPaths();
+
+                    //Use those paths to find the most optimized one
+                    Path mostOptimizedPath = FindOptimizedPath(availablePaths);
+
+                    //Set the target to this path
+                    targetPosition = mostOptimizedPath;
+
+                    //set the next state
+                    state = ENEMY_STATES.MOVE_CHESS_PIECE;
+
+                    break;
+                case ENEMY_STATES.MOVE_CHESS_PIECE:
+                    if(transform.position != targetPosition.Location)
+                    {
+                        UpdatePosition(targetPosition.Location);
+                        state = ENEMY_STATES.MOVE_CHESS_PIECE;
+                    }
+                    else
+                    {
+                        state = ENEMY_STATES.WAIT;
+                    }
+                    break;
+            }
+
+            //Finally update the current state
+            currentState = state;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+}
+
+public enum ENEMY_STATES
+{
+    WAIT,
+    LOCATE_PLAYER,
+    FIND_PATH,
+    MOVE_CHESS_PIECE,
+    DIE
 }

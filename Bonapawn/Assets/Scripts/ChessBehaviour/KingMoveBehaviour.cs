@@ -13,7 +13,7 @@ public class KingMoveBehaviour : ChessBehaviour
             {
                 if (i != 0 || j != 0)
                 {
-                    Path path = new Path(new Vector3(i, j, 0));
+                    Path path = new Path(currentPosition + new Vector3(i, j, 0));
                     availablePaths.Add(path);
                 }
             }
