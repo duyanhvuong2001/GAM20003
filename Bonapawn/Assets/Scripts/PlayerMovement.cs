@@ -5,21 +5,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5;
+    private float moveSpeed = 1;
     private bool walking;
 
     private Rigidbody2D rb;
-    // private Animator anim;
+    private Animator anim;
 
     private Vector2 movement;
     private Vector3 moveToPosition;
+    bool facingRight = true;
 
     public LayerMask MovementStop;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -38,12 +39,15 @@ public class PlayerMovement : MonoBehaviour
                 if (!Physics2D.OverlapCircle(transform.position + new Vector3(movement.x, movement.y, 0), 0.01f, MovementStop))
                 {
                     moveToPosition = transform.position + new Vector3(movement.x, movement.y, 0);
-                    // anim.SetFloat("X", movement.x);
-                    // anim.SetFloat("Y", movement.y);
-                    // anim.SetBool("walking", true)
 
                     StartCoroutine(Move(moveToPosition));
                 }
+            }
+            if (movement.x < 0 && facingRight){
+                Flip();
+            }
+            else if (movement.x > 0 && !facingRight){
+                Flip();
             }
 
             // anim.SetBool("walking", walking);   
@@ -65,5 +69,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Flip()
+	{
+		facingRight = !facingRight;
+		transform.Rotate(0f, 180f, 0f);
+	}
 
 }
