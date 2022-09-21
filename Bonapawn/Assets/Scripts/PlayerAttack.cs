@@ -74,7 +74,7 @@ public class PlayerAttack : MonoBehaviour
 
         if(attackDurationActive > 0f)
         {
-            attackDurationActive -= 1f;
+            attackDurationActive -= 1f * Time.deltaTime;
             if (attackDurationActive <= 0f)
             {
                 attackDelayActive = attackDelay;
@@ -85,7 +85,7 @@ public class PlayerAttack : MonoBehaviour
 
         if(attackDelayActive > 0f)
         {
-            attackDelayActive -= 1f;
+            attackDelayActive -= 1f * Time.deltaTime;
         }
     }
 }
