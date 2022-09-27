@@ -112,7 +112,7 @@ TextureImporter:
         width: 132
         height: 126
       alignment: 9
-      pivot: {x: 0.50421077, y: 0.04593719}
+      pivot: {x: 0.509555, y: 0.05790565}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,6 +191,27 @@ TextureImporter:
       name: skeleton_4
       rect:
         serializedVersion: 2
+        x: 332
+        y: 6
+        width: 111
+        height: 196
+      alignment: 9
+      pivot: {x: 0.05384153, y: 0.106495}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d89fa02856c554e84a8662e6160e7ea3
+      internalID: -1026060295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_5
+      rect:
+        serializedVersion: 2
         x: 503
         y: 20
         width: 264
@@ -202,8 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d89fa02856c554e84a8662e6160e7ea3
-      internalID: -1026060295
+      spriteID: 4ddd11b344bd84cbeb45844f2b4be25a
+      internalID: 583977108
       vertices: []
       indices: 
       edges: []
@@ -221,6 +242,7 @@ TextureImporter:
     nameFileIdTable:
       skeleton_1: 1929265475
       skeleton_3: 1091189777
+      skeleton_5: 583977108
       skeleton_0: -1752421924
       skeleton_2: 1696167030
       skeleton_4: -1026060295
