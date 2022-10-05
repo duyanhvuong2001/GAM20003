@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts;
 
 public class EnemyDamaged : MonoBehaviour
 {
@@ -28,17 +29,17 @@ public class EnemyDamaged : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "attack")
-        {
-            takeDamage();
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "attack")
+    //    {
+    //        takeDamage();
+    //    }
+    //}
 
-    private void takeDamage()
+    private void TakeDamage(Damage dmg)
     {
-        health -= 1;
+        health -= dmg.health;
         //probably need to add some visual indication that they've taken damage
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Assets.Scripts;
 public class PlayerAttack : MonoBehaviour
 {
     public float attackDuration = 20f;
@@ -18,6 +18,19 @@ public class PlayerAttack : MonoBehaviour
     {
         atkObj1.SetActive(false);
         atkObj2.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            Damage dmgForEnemy = new Damage()
+            {
+                health = 1
+            };
+
+            collision.SendMessage("TakeDamage",dmgForEnemy);
+        }
     }
 
     // Update is called once per frame
