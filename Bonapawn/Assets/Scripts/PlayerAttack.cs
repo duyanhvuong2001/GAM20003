@@ -20,18 +20,7 @@ public class PlayerAttack : MonoBehaviour
         atkObj2.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Enemy")
-        {
-            Damage dmgForEnemy = new Damage()
-            {
-                health = 1
-            };
-
-            collision.SendMessage("TakeDamage",dmgForEnemy);
-        }
-    }
+    
 
     // Update is called once per frame
     void Update()
