@@ -61,6 +61,15 @@ public abstract class ChessPiece : MonoBehaviour
     }
     protected void UpdatePosition(Vector3 destination)
     {
+        float deltaX = destination.x - transform.position.x;
+        
+        if(deltaX>0){
+            transform.localScale = new Vector3(-1,1,1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1,1,1);
+        }
         transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
     }
 
@@ -110,6 +119,7 @@ public abstract class ChessPiece : MonoBehaviour
                     if(transform.position != targetPosition.Location)
                     {
                         UpdatePosition(targetPosition.Location);
+                        
                         state = ENEMY_STATES.MOVE_CHESS_PIECE;
                     }
                     else
