@@ -38,7 +38,7 @@ public abstract class ChessPiece : MonoBehaviour
         List<Path> paths = new List<Path>();
         foreach(ChessBehaviour behaviour in behaviours)
         {
-            paths.AddRange(behaviour.ExploreAvailablePaths(transform.position));
+            paths.AddRange(behaviour.ExploreAvailablePaths(transform.position, boxCollider));
         }
         return paths;
     }
