@@ -16,11 +16,8 @@ public abstract class ChessBehaviour
             collider.size,
             0,
             destination - currentPosition,
-<<<<<<< Updated upstream
-            Mathf
-=======
+            Vector3.Distance(destination, currentPosition));
+        return true;
 
->>>>>>> Stashed changes
-            );
     }
 }
