@@ -6,12 +6,12 @@ public class HorizontalMoveBehaviour : ChessBehaviour
 {
     private int _horizontalLimit;
 
-    public HorizontalMoveBehaviour(int horizontalLimit)
+    public HorizontalMoveBehaviour(int horizontalLimit) : base()
     {
         _horizontalLimit = horizontalLimit;
     }
 
-    public override List<Path> ExploreAvailablePaths(Vector3 currentPosition)
+    public override List<Path> ExploreAvailablePaths(Vector3 currentPosition, BoxCollider2D boxCollider)
     {
         List<Path> paths = new List<Path>();
 

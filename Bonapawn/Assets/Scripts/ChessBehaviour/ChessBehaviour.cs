@@ -16,7 +16,11 @@ public abstract class ChessBehaviour
             collider.size,
             0,
             destination - currentPosition,
+<<<<<<< Updated upstream
             Mathf
+=======
+
+>>>>>>> Stashed changes
             );
     }
 }

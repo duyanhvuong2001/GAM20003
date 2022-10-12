@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnightMoveBehaviour : ChessBehaviour
 {
-    public override List<Path> ExploreAvailablePaths(Vector3 currentPosition)
+    public override List<Path> ExploreAvailablePaths(Vector3 currentPosition, BoxCollider2D boxCollider)
     {
         List<Path> availablePaths = new List<Path>();
         //move up paths
