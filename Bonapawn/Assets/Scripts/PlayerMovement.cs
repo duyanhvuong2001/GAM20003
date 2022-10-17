@@ -15,12 +15,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveToPosition;
     bool facingRight = true;
 
+    private AudioSource audioSource;
+
     public LayerMask MovementStop;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -50,6 +53,17 @@ public class PlayerMovement : MonoBehaviour
                 Flip();
             }
 
+            if (walking)
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
+            else
+            {
+                audioSource.Stop();
+            }
             // anim.SetBool("walking", walking);   
         }
     }

@@ -12,12 +12,14 @@ public class PlayerAttack : MonoBehaviour
     public GameObject atkObj1;
     public GameObject atkObj2;
 
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         atkObj1.SetActive(false);
         atkObj2.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     
@@ -71,6 +73,14 @@ public class PlayerAttack : MonoBehaviour
                 atkObj1.SetActive(true);
                 atkObj2.SetActive(true);
                 attackDurationActive = attackDuration;
+            }
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
             }
         }
 
