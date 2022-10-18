@@ -14,7 +14,7 @@ public class Trigger : MonoBehaviour
     public void TriggerDialogue()
     {
         FindObjectOfType<DialogManagerInk>().EnterDialogueMode(InkJSON, name);
-        Debug.Log(name);
-        Debug.Log(InkJSON.text);
+        //Debug.Log(name);
+        //Debug.Log(InkJSON.text);
     }
 }
