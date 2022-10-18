@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public float attackDelay = 10f;
     public float attackDurationActive = 0f;
     public float attackDelayActive = 0f;
+    public Animator anim;
 
     public GameObject atkObj1;
     public GameObject atkObj2;
@@ -68,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            anim.SetTrigger("attack");
             if (attackDelayActive <= 0f)
             {
                 atkObj1.SetActive(true);
