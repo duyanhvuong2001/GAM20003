@@ -13,7 +13,7 @@ public abstract class ChessPiece : MonoBehaviour
     private Vector3 moveDelta;
 
     private Vector3 originalSize;
-    private float speed = 2f;
+    private float speed = 4f;
 
     //Protected properties 
     protected bool isAlive;
