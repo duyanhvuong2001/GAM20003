@@ -128,7 +128,15 @@ public abstract class ChessPiece : MonoBehaviour
             LayerMask.GetMask("Blocking")
             );
 
-        utilityPoint -= wallsHit.Length * 1000;
+        foreach(RaycastHit2D wall in wallsHit)
+        {
+            utilityPoint -= 100;
+        }
+
+        if(wallsHit.Length > 0)
+        {
+            utilityPoint -= wallsHit[0].distance;
+        }
 
         return utilityPoint;
 

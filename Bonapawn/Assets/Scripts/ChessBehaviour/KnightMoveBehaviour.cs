@@ -43,6 +43,21 @@ public class KnightMoveBehaviour : ChessBehaviour
         //Add to the list of paths
         availablePaths.AddRange(moveRightPaths);
 
+        List<Path> pathsToRemove = new List<Path>();
+
+        foreach(Path path in availablePaths)
+        {
+            if(!PathAvailable(currentPosition,path.Location,boxCollider))
+            {
+                pathsToRemove.Add(path);
+            }
+        }
+
+        foreach(Path pathToRemove in pathsToRemove)
+        {
+            availablePaths.Remove(pathToRemove);
+        }
+
         return availablePaths;
 
     }
