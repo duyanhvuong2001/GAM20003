@@ -136,6 +136,7 @@ public abstract class ChessPiece : MonoBehaviour
         if(wallsHit.Length > 0)
         {
             utilityPoint -= wallsHit[0].distance;
+           
         }
 
         return utilityPoint;
