@@ -7,11 +7,9 @@ public class DialogTriggerInk : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Ink JSON")]
-    [SerializeField] private TextAsset InkJSON;
 
     private bool playerInRange;
-
+   
     private void Awake()
     {
         playerInRange = false;
@@ -23,13 +21,6 @@ public class DialogTriggerInk : MonoBehaviour
         if (playerInRange)
         {
             visualCue.SetActive(true);
-            FindObjectOfType<DialogManagerInk>().EnterDialogueMode(InkJSON);
-            Debug.Log(InkJSON.text);
-            /*if(InputManager.GetInstance().GetInteractPressed())
-            {
-                Debug.Log(InkJSON.text);
-                DialogManagerInk.GetInstance().EnterDialogueMode(InkJSON);
-            }*/
         }
         else
         {
@@ -42,6 +33,7 @@ public class DialogTriggerInk : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            Debug.Log("enter trigger");
             playerInRange = true;
         }
     }
@@ -49,6 +41,7 @@ public class DialogTriggerInk : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
+            Debug.Log(" exit trigger");
             playerInRange = false;
         }
     }

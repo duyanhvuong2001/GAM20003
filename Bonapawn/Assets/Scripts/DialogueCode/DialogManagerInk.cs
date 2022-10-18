@@ -12,9 +12,10 @@ public class DialogManagerInk : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     //[SerializeField] private TextMeshProUGUI dialogueText;
     
+    [SerializeField] private Text nameText;
     [SerializeField] private Text dialogueText;
-
-    public Text nameText;
+    
+    public Animator animator;
 
     private Story currentStory;
 
@@ -50,13 +51,16 @@ public class DialogManagerInk : MonoBehaviour
         }
         else
         {
-             ContinueStory();
+            ContinueStory();
         }
            
     }
 
-    public void EnterDialogueMode(TextAsset InkJSON)
+    public void EnterDialogueMode(TextAsset InkJSON , string NPCName)
     {
+        animator.SetBool("IsOpen", true);
+        nameText.text = NPCName;
+        Debug.Log("works");
         
         currentStory = new Story(InkJSON.text);
         dialogueIsPlaying = true;
@@ -68,6 +72,7 @@ public class DialogManagerInk : MonoBehaviour
 
     private void ExitDialogueMode()
     {
+        animator.SetBool("IsOpen", false);
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
