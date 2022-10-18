@@ -14,7 +14,6 @@ public class VerticalMoveBehaviour : ChessBehaviour
     public override List<Path> ExploreAvailablePaths(Vector3 currentPosition, BoxCollider2D boxCollider)
     {
         List<Path> paths = new List<Path>();
-
         for(int i=1;i<=_verticalLimit;i++)
         {
             //2 paths on the ooposite side

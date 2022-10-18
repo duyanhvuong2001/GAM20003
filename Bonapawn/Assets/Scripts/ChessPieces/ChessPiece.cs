@@ -19,17 +19,25 @@ public abstract class ChessPiece : MonoBehaviour
     protected bool isAlive;
     protected ENEMY_STATES currentState;
     protected int health = 5;
+    protected List<Path> pathMemory;
+
     //Enemy logic
     protected float lastMove;
     protected float moveCooldown;
     protected Vector3 playerCoordinates;
     protected Path targetPosition;
+    const int MAX_PATH_MEMORY_CAPACITY = 10;
 
     //Set-up Awake functions
     protected virtual void Awake()
     {
         originalSize = transform.localScale;
+        boxCollider = GetComponent<BoxCollider2D>();   
         behaviours = new List<ChessBehaviour>();
+        pathMemory = new List<Path>();
+
+        pathMemory.Add(new Path(transform.position));
+
         isAlive = true;
     }
 
@@ -40,24 +48,90 @@ public abstract class ChessPiece : MonoBehaviour
         {
             paths.AddRange(behaviour.ExploreAvailablePaths(transform.position, boxCollider));
         }
+        Debug.Log(paths.Count);
+
+        paths = FilterPaths(paths);
+        return paths;;
+    }
+
+    protected List<Path> FilterPaths(List<Path> paths)
+    {
+        List<Path> filteredPaths = new List<Path>();
+
+        foreach(Path path in paths)
+        {
+            foreach(Path memoryPath in pathMemory)
+            {
+                
+                if (memoryPath.Location.ToString() == path.Location.ToString())
+                {
+                    Debug.Log("CDD" + path.Location.ToString());
+                    Debug.Log("MEMORY" + memoryPath.Location.ToString());
+                    filteredPaths.Add(path);
+                }
+            }
+        }
+        
+        foreach(Path path in filteredPaths)
+        {
+            paths.Remove(path);
+        }
+        Debug.Log(paths.Count);
+
         return paths;
+    }
+
+    protected void UpdatePathMemory()
+    {
+        if(pathMemory.Count > MAX_PATH_MEMORY_CAPACITY)
+        {
+            
+            pathMemory.RemoveAt(0);
+        }
+
+        pathMemory.Add(targetPosition);
+        Debug.Log(pathMemory.Count);
     }
 
     protected Path FindOptimizedPath(List<Path> paths)
     {
         Path optimizedPath = null;
-        float shortestDistance = float.MaxValue;
+        float maxUtilityValue = float.MinValue;
+
         for(int i=0;i<paths.Count;i++)
         {
-            if (Vector3.Distance(paths[i].Location, playerCoordinates) < shortestDistance)
+            float pathUtility = CalculateUtilityPoint(paths[i]);
+            if (pathUtility > maxUtilityValue)
             {
-                shortestDistance = Vector3.Distance(paths[i].Location, playerCoordinates);
+                maxUtilityValue = pathUtility;
                 optimizedPath = paths[i];
-                Debug.Log(shortestDistance);
+                Debug.Log(maxUtilityValue);
             }
         }
 
         return optimizedPath;
+    }
+
+    protected float CalculateUtilityPoint(Path p)
+    {
+        float utilityPoint = 0f;
+        RaycastHit2D[] wallsHit;
+
+        //Subtract utility point by distance
+        utilityPoint -= Vector3.Distance(p.Location, playerCoordinates);
+
+        //Subtract utility point by the number of walls between that position and the player
+        wallsHit = Physics2D.RaycastAll(
+            p.Location,
+            playerCoordinates,
+            Vector3.Distance(p.Location, playerCoordinates),
+            LayerMask.GetMask("Blocking")
+            );
+
+        utilityPoint -= wallsHit.Length * 1000;
+
+        return utilityPoint;
+
     }
     protected void UpdatePosition(Vector3 destination)
     {
@@ -78,7 +152,7 @@ public abstract class ChessPiece : MonoBehaviour
     protected virtual void Update()
     {
         ENEMY_STATES state = currentState;
-        Debug.Log(state);
+        //Debug.Log(state);
         if (isAlive)
         {
             //Act based on current state
@@ -111,6 +185,9 @@ public abstract class ChessPiece : MonoBehaviour
                     //Set the target to this path
                     targetPosition = mostOptimizedPath;
 
+                    //Store the path to the enemy's memory
+                    UpdatePathMemory();
+
                     //set the next state
                     state = ENEMY_STATES.MOVE_CHESS_PIECE;
 
@@ -119,12 +196,16 @@ public abstract class ChessPiece : MonoBehaviour
                     if(transform.position != targetPosition.Location)
                     {
                         UpdatePosition(targetPosition.Location);
+
                         
                         state = ENEMY_STATES.MOVE_CHESS_PIECE;
                     }
                     else
                     {
                         lastMove = Time.time;
+
+                        
+
                         state = ENEMY_STATES.WAIT;
                     }
                     break;

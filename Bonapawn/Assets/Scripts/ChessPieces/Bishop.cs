@@ -11,7 +11,7 @@ namespace Assets.Scripts.ChessPieces
         protected override void Awake()
         {
             base.Awake();
-            behaviours.Add(new DiagonalMoveBehaviour(2));
+            behaviours.Add(new DiagonalMoveBehaviour(5));
             moveCooldown = 1.5f;
         }
     }
