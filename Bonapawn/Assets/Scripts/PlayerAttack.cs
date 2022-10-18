@@ -31,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            anim.SetTrigger("attack");
             transform.eulerAngles = new Vector3(
                 transform.eulerAngles.x,
                 transform.eulerAngles.y,
