@@ -23,7 +23,7 @@ public class DialogTriggerInk : MonoBehaviour
         playerInRange = false;
         visualCue.SetActive(false);
     }
-    
+
     public void TriggerDialogue()
     {
         FindObjectOfType<DialogManagerInk>().EnterDialogueMode(InkJSON, name);
@@ -49,6 +49,7 @@ public class DialogTriggerInk : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             Debug.Log("enter trigger");
+            Debug.Log(name);
             playerInRange = true;
         }
     }
@@ -57,6 +58,7 @@ public class DialogTriggerInk : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             Debug.Log(" exit trigger");
+            Debug.Log(name);
             playerInRange = false;
         }
     }
