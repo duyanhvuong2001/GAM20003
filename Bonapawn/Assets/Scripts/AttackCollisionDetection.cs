@@ -6,6 +6,7 @@ using Assets.Scripts;
 
 public class AttackCollisionDetection : MonoBehaviour
 {
+    public int dmg = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,15 +15,8 @@ public class AttackCollisionDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "enemy")
-        {
-            Damage dmgForEnemy = new Damage()
-            {
-                health = 1
-            };
-
-            collision.SendMessage("TakeDamage", dmgForEnemy);
-        }
+        collision.SendMessage("TakeDamage", dmg);
+        
     }
 
     // Update is called once per frame
