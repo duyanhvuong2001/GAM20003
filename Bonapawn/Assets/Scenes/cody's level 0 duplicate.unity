@@ -7496,6 +7496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea228e36183e1145b606bf3a9dba5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBase: {fileID: 2009928859}
   MovementStop:
     serializedVersion: 2
     m_Bits: 262144
