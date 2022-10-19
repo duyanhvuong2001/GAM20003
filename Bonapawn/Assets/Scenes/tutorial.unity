@@ -11303,7 +11303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12154,7 +12154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e1d9e3f2fc4a94eb2d3c4233e83208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualCue: {fileID: 510201238}
+  visualCue: {fileID: 1917983166}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
 --- !u!61 &1207666420
