@@ -58,7 +58,7 @@ public class EnemyDamaged : MonoBehaviour
     {
         if(delay <= 0)
         {
-            health -= dmg.health;
+            health -= dmg;
         }
 
         if (Damaged != null)
