@@ -9,6 +9,8 @@ public class EnemyDamaged : MonoBehaviour
     public int health = 3;
     public int scoreValue;
     private GameObject UI;
+    private GameObject Damaged;
+    private float delay;
 
 
 
@@ -16,6 +18,7 @@ public class EnemyDamaged : MonoBehaviour
     void Start()
     {
         UI = GameObject.Find("UI");
+        Damaged = GameObject.Find("damaged");
         //gc = UI.GetComponent<GameplayController>();
     }
 
@@ -27,6 +30,20 @@ public class EnemyDamaged : MonoBehaviour
             Destroy(gameObject);
             //gc.IncreaseScore(scoreValue);
         }
+
+        if(delay > 0f)
+        {
+            delay -= 1f;
+        }
+        else
+        {
+            if (Damaged != null)
+            {
+                Damaged.SetActive(false);
+            }
+        }
+
+        
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
@@ -39,8 +56,15 @@ public class EnemyDamaged : MonoBehaviour
 
     private void TakeDamage(int dmg)
     {
-        health -= dmg;
-        Debug.Log("HIT");
-        //probably need to add some visual indication that they've taken damage
+        if(delay <= 0)
+        {
+            health -= dmg.health;
+        }
+
+        if (Damaged != null)
+        {
+            Damaged.SetActive(true);
+        }
+        delay = 20f;
     }
 }
