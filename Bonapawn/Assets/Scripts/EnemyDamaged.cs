@@ -6,7 +6,7 @@ using Assets.Scripts;
 public class EnemyDamaged : MonoBehaviour
 {
 
-    public float health;
+    public int health = 3;
     public int scoreValue;
     private GameObject UI;
 
@@ -37,9 +37,10 @@ public class EnemyDamaged : MonoBehaviour
     //    }
     //}
 
-    private void TakeDamage(Damage dmg)
+    private void TakeDamage(int dmg)
     {
-        health -= dmg.health;
+        health -= dmg;
+        Debug.Log("HIT");
         //probably need to add some visual indication that they've taken damage
     }
 }
