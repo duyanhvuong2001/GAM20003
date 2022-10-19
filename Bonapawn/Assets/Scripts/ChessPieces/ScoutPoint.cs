@@ -11,10 +11,10 @@ namespace Assets.Scripts.ChessPieces
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Entered");
-            if(collision.tag == "enemy")
+            Debug.Log("HHHHH");
+            if (collision.gameObject.tag == "enemy")
             {
-                collision.SendMessage("SwapScoutPoint");
+                collision.gameObject.SendMessage("SwapScoutPoint");
             }
         }
     }

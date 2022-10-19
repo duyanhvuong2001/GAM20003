@@ -176,7 +176,7 @@ public abstract class ChessPiece : MonoBehaviour
 
     //Update function
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         ENEMY_STATES state = currentState;
         //Debug.Log(state);
