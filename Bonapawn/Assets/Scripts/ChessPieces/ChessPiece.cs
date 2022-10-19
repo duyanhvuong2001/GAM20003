@@ -202,19 +202,27 @@ public abstract class ChessPiece : MonoBehaviour
 
                     break;
                 case ENEMY_STATES.MOVE_CHESS_PIECE:
-                    if(transform.position != targetPosition.Location)
+                    if(targetPosition!=null)
                     {
-                        UpdatePosition(targetPosition.Location);
+                        if (transform.position != targetPosition.Location)
+                        {
+                            UpdatePosition(targetPosition.Location);
 
+
+                            state = ENEMY_STATES.MOVE_CHESS_PIECE;
+                        }
+                        else
+                        {
+                            lastMove = Time.time;
+
+
+
+                            state = ENEMY_STATES.WAIT;
+                        }
                         
-                        state = ENEMY_STATES.MOVE_CHESS_PIECE;
                     }
                     else
                     {
-                        lastMove = Time.time;
-
-                        
-
                         state = ENEMY_STATES.WAIT;
                     }
                     break;
