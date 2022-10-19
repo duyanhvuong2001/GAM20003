@@ -22,10 +22,15 @@ public abstract class ChessPiece : MonoBehaviour
     protected List<Path> pathMemory;
 
     //Enemy logic
+    public float scoutRadius;
     protected bool playerDetected;
     protected float lastMove;
     protected float moveCooldown;
     protected Vector3 playerCoordinates;
+    protected Vector3 headingLocation;
+    [SerializeField] private GameObject scoutPointGO;
+     private Vector3 scoutStart;
+     private Vector3 scoutEnd;
     protected Path targetPosition;
     const int MAX_PATH_MEMORY_CAPACITY = 10;
 
@@ -40,6 +45,9 @@ public abstract class ChessPiece : MonoBehaviour
         pathMemory.Add(new Path(transform.position));
         playerDetected = false;
         isAlive = true;
+        scoutRadius = 4;
+        scoutStart = transform.position;
+        scoutEnd = scoutPointGO.transform.position;
     }
 
     protected List<Path> FindPaths()
@@ -157,6 +165,15 @@ public abstract class ChessPiece : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
     }
 
+    protected void SwapScoutPoint()
+    {
+        Vector3 temp = scoutStart;
+        scoutStart = scoutEnd;
+        scoutEnd = temp;
+
+        scoutPointGO.transform.position = scoutEnd;
+    }
+
     //Update function
 
     protected virtual void Update()
@@ -181,10 +198,33 @@ public abstract class ChessPiece : MonoBehaviour
                         state = ENEMY_STATES.WAIT;
                     }
                     break;
-
-
                 case ENEMY_STATES.LOCATE_PLAYER:
                     playerCoordinates = GameManager.instance.playerTransform.position;
+                    state = ENEMY_STATES.SCOUT;
+                    break;
+                case ENEMY_STATES.SCOUT:
+                    if(playerDetected)
+                    {
+                        headingLocation = playerCoordinates;
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(transform.position, playerCoordinates) < 4.0f)
+                        {
+                            headingLocation = playerCoordinates;
+                            playerDetected = true;
+                        }
+                        else
+                        {
+                            headingLocation = scoutEnd;
+                        }
+                    }
+                   
+               
+                    state = ENEMY_STATES.FIND_PATH;
+                    break;
+               
+                case ENEMY_STATES.LOCATE_SCOUT_POINT:
                     state = ENEMY_STATES.FIND_PATH;
                     break;
                 case ENEMY_STATES.FIND_PATH:
@@ -192,7 +232,7 @@ public abstract class ChessPiece : MonoBehaviour
                     List<Path> availablePaths = FindPaths();
 
                     //Use those paths to find the most optimized one
-                    Path mostOptimizedPath = FindOptimizedPath(availablePaths, playerCoordinates);
+                    Path mostOptimizedPath = FindOptimizedPath(availablePaths, headingLocation);
 
                     //Set the target to this path
                     targetPosition = mostOptimizedPath;
@@ -216,6 +256,7 @@ public abstract class ChessPiece : MonoBehaviour
                         }
                         else
                         {
+    
                             lastMove = Time.time;
 
 
@@ -246,6 +287,7 @@ public enum ENEMY_STATES
 
     WAIT,
     SCOUT,
+    LOCATE_SCOUT_POINT,
     SWAP_SCOUTING_POINT,
     LOCATE_PLAYER,
     FIND_PATH,
