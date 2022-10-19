@@ -7,6 +7,14 @@ public class DialogTriggerInk : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
+    [Header("Ink JSON")]
+    [SerializeField] private TextAsset InkJSON;
+
+    [Header("Name")]
+    [SerializeField] public string name;
+
+  
+
 
     private bool playerInRange;
    
@@ -14,6 +22,13 @@ public class DialogTriggerInk : MonoBehaviour
     {
         playerInRange = false;
         visualCue.SetActive(false);
+    }
+    
+    public void TriggerDialogue()
+    {
+        FindObjectOfType<DialogManagerInk>().EnterDialogueMode(InkJSON, name);
+        //Debug.Log(name);
+        //Debug.Log(InkJSON.text);
     }
 
     private void Update()
