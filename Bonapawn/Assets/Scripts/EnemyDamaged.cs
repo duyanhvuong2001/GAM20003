@@ -56,15 +56,18 @@ public class EnemyDamaged : MonoBehaviour
 
     private void TakeDamage(int dmg)
     {
-        if(delay <= 0)
+        if (delay <= 0)
         {
             health -= dmg;
-        }
 
-        if (Damaged != null)
-        {
-            Damaged.SetActive(true);
+
+            if (Damaged != null)
+            {
+                Damaged.SetActive(true);
+            }
+            delay = 20f;
+
+            gameObject.GetComponent<KnockBack>().KnockedBack();
         }
-        delay = 20f;
     }
 }
