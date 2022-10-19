@@ -22,6 +22,7 @@ public abstract class ChessPiece : MonoBehaviour
     protected List<Path> pathMemory;
 
     //Enemy logic
+    protected bool playerDetected;
     protected float lastMove;
     protected float moveCooldown;
     protected Vector3 playerCoordinates;
@@ -37,7 +38,7 @@ public abstract class ChessPiece : MonoBehaviour
         pathMemory = new List<Path>();
 
         pathMemory.Add(new Path(transform.position));
-
+        playerDetected = false;
         isAlive = true;
     }
 
@@ -93,14 +94,14 @@ public abstract class ChessPiece : MonoBehaviour
         Debug.Log(pathMemory.Count);
     }
 
-    protected Path FindOptimizedPath(List<Path> paths)
+    protected Path FindOptimizedPath(List<Path> paths, Vector3 destination)
     {
         Path optimizedPath = null;
         float maxUtilityValue = float.MinValue;
 
         for(int i=0;i<paths.Count;i++)
         {
-            float pathUtility = CalculateUtilityPoint(paths[i]);
+            float pathUtility = CalculateUtilityPoint(paths[i], destination);
             if (pathUtility > maxUtilityValue)
             {
                 maxUtilityValue = pathUtility;
@@ -112,13 +113,13 @@ public abstract class ChessPiece : MonoBehaviour
         return optimizedPath;
     }
 
-    protected float CalculateUtilityPoint(Path p)
+    protected float CalculateUtilityPoint(Path p, Vector3 destination)
     {
         float utilityPoint = 0f;
         RaycastHit2D[] wallsHit;
 
         //Subtract utility point by distance
-        utilityPoint -= Vector3.Distance(p.Location, playerCoordinates);
+        utilityPoint -= Vector3.Distance(p.Location, destination);
 
         //Subtract utility point by the number of walls between that position and the player
         wallsHit = Physics2D.RaycastAll(
@@ -180,6 +181,8 @@ public abstract class ChessPiece : MonoBehaviour
                         state = ENEMY_STATES.WAIT;
                     }
                     break;
+
+
                 case ENEMY_STATES.LOCATE_PLAYER:
                     playerCoordinates = GameManager.instance.playerTransform.position;
                     state = ENEMY_STATES.FIND_PATH;
@@ -189,7 +192,7 @@ public abstract class ChessPiece : MonoBehaviour
                     List<Path> availablePaths = FindPaths();
 
                     //Use those paths to find the most optimized one
-                    Path mostOptimizedPath = FindOptimizedPath(availablePaths);
+                    Path mostOptimizedPath = FindOptimizedPath(availablePaths, playerCoordinates);
 
                     //Set the target to this path
                     targetPosition = mostOptimizedPath;
@@ -240,7 +243,10 @@ public abstract class ChessPiece : MonoBehaviour
 
 public enum ENEMY_STATES
 {
+
     WAIT,
+    SCOUT,
+    SWAP_SCOUTING_POINT,
     LOCATE_PLAYER,
     FIND_PATH,
     MOVE_CHESS_PIECE,
