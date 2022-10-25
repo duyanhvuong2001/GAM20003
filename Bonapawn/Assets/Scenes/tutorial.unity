@@ -35357,7 +35357,7 @@ GameObject:
   - component: {fileID: 2015093507}
   - component: {fileID: 2015093509}
   m_Layer: 0
-  m_Name: Square
+  m_Name: leveltrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
