@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 799a87bafaaa640e2ae14ee5e683de91
+guid: 36c0377b3839b4a669ad4ad177cd0aaf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,34 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skeleton enemy_0
+      name: skeleton bishop_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 263
-        width: 132
-        height: 126
-      alignment: 9
-      pivot: {x: 0.50000006, y: 0.047777448}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08b4531671d0b40d48ee066986774df0
-      internalID: 2039749643
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: skeleton enemy_1
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 240
-        width: 148
-        height: 149
+        x: 39
+        y: 302
+        width: 6
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,14 +118,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19e4b9a1f89da4ec6a1977511b0d499f
-      internalID: 359350445
+      spriteID: 9bcdd1e9e112e41a1841b5a22d79369a
+      internalID: -1193635468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skeleton enemy_2
+      name: skeleton bishop_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 246
+        width: 142
+        height: 150
+      alignment: 9
+      pivot: {x: 0.56832254, y: -0.050306294}
+      border: {x: 0, y: 0, z: 0, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0914c94d69cc45478afb85e1bdf5934
+      internalID: -2010519195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton bishop_2
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 201
+        width: 179
+        height: 189
+      alignment: 9
+      pivot: {x: 0.43704137, y: 0.5447223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3d98ad3466b4d8bb765c824042a395
+      internalID: 1963515316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton bishop_3
       rect:
         serializedVersion: 2
         x: 503
@@ -160,56 +181,119 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f67a2c8723b714fbebcab06c66234731
-      internalID: -396726175
+      spriteID: 806bb5d79bbb34f73b8f761b0e0cadd1
+      internalID: 1176760886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skeleton enemy_3
+      name: skeleton bishop_4
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 259
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0c59d23a69b467f8aa60de984712ed
+      internalID: 1312150276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton bishop_5
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 239
+        width: 32
+        height: 28
+      alignment: 9
+      pivot: {x: 0.57972, y: 0.4392613}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88921d1dce96c4b32bfcab8f5a1c59f2
+      internalID: 1431234411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton bishop_6
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 253
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8c72a008490c49f1a6cd213031d758b
+      internalID: -1474123247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton bishop_7
       rect:
         serializedVersion: 2
         x: 17
         y: 116
-        width: 180
+        width: 177
         height: 88
       alignment: 9
-      pivot: {x: 0.5391306, y: 0.5}
+      pivot: {x: 0.5083568, y: 0.99596334}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a477d1f7ea0c4dacb257f5696d0f953
-      internalID: 1809849891
+      spriteID: 89c7ba9c7a761410fb456a6a82cebcd9
+      internalID: 129557140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skeleton enemy_4
+      name: skeleton bishop_8
       rect:
         serializedVersion: 2
-        x: 330
+        x: 332
         y: 6
         width: 111
         height: 196
-      alignment: 9
-      pivot: {x: 0.037999608, y: 0.10269012}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3b536e3f14f647689ae025cdf9e38db
-      internalID: 811774627
+      spriteID: 1bd857625944246b5bda8aedf1b94446
+      internalID: 1524619206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skeleton enemy_5
+      name: skeleton bishop_9
       rect:
         serializedVersion: 2
         x: 503
@@ -223,8 +307,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ca577c6e941847db9dd603e21c4d9c7
-      internalID: 1692949422
+      spriteID: b54da053b7db04211998d5b987dcacf1
+      internalID: -477783751
       vertices: []
       indices: 
       edges: []
@@ -240,12 +324,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      skeleton enemy_0: 2039749643
-      skeleton enemy_4: 811774627
-      skeleton enemy_5: 1692949422
-      skeleton enemy_3: 1809849891
-      skeleton enemy_2: -396726175
-      skeleton enemy_1: 359350445
+      skeleton bishop_9: -477783751
+      skeleton bishop_6: -1474123247
+      skeleton bishop_8: 1524619206
+      skeleton bishop_2: 1963515316
+      skeleton bishop_4: 1312150276
+      skeleton bishop_0: -1193635468
+      skeleton bishop_7: 129557140
+      skeleton bishop_1: -2010519195
+      skeleton bishop_5: 1431234411
+      skeleton bishop_3: 1176760886
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 1
