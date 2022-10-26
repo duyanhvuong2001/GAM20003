@@ -15,7 +15,9 @@ public class AttackCollisionDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.SendMessage("TakeDamage", dmg);
+        if(collision.tag == "enemy"){
+            collision.SendMessage("TakeDamage", dmg);
+        }
         
     }
 
