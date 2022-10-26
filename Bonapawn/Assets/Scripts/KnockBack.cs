@@ -42,6 +42,20 @@ public class KnockBack : MonoBehaviour
         }
     }
 
+    public void KnockedBackPlayer()
+    {
+        if (!walking)
+        {
+            Vector2 direction = -GameManager.instance.playerTransform.right;
+            if (!Physics2D.OverlapCircle(transform.position + new Vector3(direction.x, direction.y, 0), 0.01f, MovementStop))
+            {
+                moveToPosition = transform.position + new Vector3(direction.x, direction.y, 0);
+
+                StartCoroutine(Move(moveToPosition));
+            }
+        }
+    }
+
     IEnumerator Move(Vector3 newPos)
     {
         walking = true;
