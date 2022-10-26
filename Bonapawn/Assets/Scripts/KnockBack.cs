@@ -7,7 +7,7 @@ public class KnockBack : MonoBehaviour
 {
     private float moveSpeed = 1;
     private bool walking;
-    public GameObject playerBase;
+
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -32,7 +32,7 @@ public class KnockBack : MonoBehaviour
     {
         if(!walking)
         {
-            Vector2 direction = playerBase.transform.right;
+            Vector2 direction = GameManager.instance.playerTransform.right;
             if (!Physics2D.OverlapCircle(transform.position + new Vector3(direction.x, direction.y, 0), 0.01f, MovementStop))
             {
                     moveToPosition = transform.position + new Vector3(direction.x, direction.y, 0);

@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 movement.y = 0;
             }
+
             if(movement != Vector2.zero)
             {
                 if (!Physics2D.OverlapCircle(transform.position + new Vector3(movement.x, movement.y, 0), 0.01f, MovementStop))
