@@ -15,18 +15,9 @@ public class AttackCollisionDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-<<<<<<< Updated upstream
         if(collision.tag == "enemy"){
             collision.SendMessage("TakeDamage", dmg);
         }
-=======
-        if(collision.tag == "enemy")
-        {
-            collision.SendMessage("TakeDamage", dmg);
-        }
-       
->>>>>>> Stashed changes
-        
     }
 
     // Update is called once per frame
