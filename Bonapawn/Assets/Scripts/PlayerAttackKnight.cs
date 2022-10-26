@@ -40,18 +40,7 @@ public class PlayerAttackKnight : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (attackDelayActive <= 0f && charges > 0 && attackDurationActive! <= 0f)
-            {
-                atkObjN1.SetActive(true);
-                atkObjN2.SetActive(true);
-                atkObjE1.SetActive(true);
-                atkObjE2.SetActive(true);
-                atkObjS1.SetActive(true);
-                atkObjS2.SetActive(true);
-                atkObjW1.SetActive(true);
-                atkObjW2.SetActive(true);
-                attackDurationActive = attackDuration;
-            }
+            
         }
 
         if (attackDurationActive > 0f)
@@ -75,5 +64,23 @@ public class PlayerAttackKnight : MonoBehaviour
         {
             attackDelayActive -= 1f * Time.deltaTime;
         }
+    }
+
+    public bool attackKnight()
+    {
+        if (attackDelayActive <= 0f && attackDurationActive! <= 0f)
+        {
+            atkObjN1.SetActive(true);
+            atkObjN2.SetActive(true);
+            atkObjE1.SetActive(true);
+            atkObjE2.SetActive(true);
+            atkObjS1.SetActive(true);
+            atkObjS2.SetActive(true);
+            atkObjW1.SetActive(true);
+            atkObjW2.SetActive(true);
+            attackDurationActive = attackDuration;
+            return true;
+        }
+        else { return false; }
     }
 }

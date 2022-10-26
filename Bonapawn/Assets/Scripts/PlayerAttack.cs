@@ -70,21 +70,7 @@ public class PlayerAttack : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            anim.SetTrigger("attack");
-            if (attackDelayActive <= 0f)
-            {
-                atkObj1.SetActive(true);
-                atkObj2.SetActive(true);
-                attackDurationActive = attackDuration;
-            }
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
-            else
-            {
-                audioSource.Stop();
-            }
+           
         }
 
         if(attackDurationActive > 0f)
@@ -101,6 +87,25 @@ public class PlayerAttack : MonoBehaviour
         if(attackDelayActive > 0f)
         {
             attackDelayActive -= 1f * Time.deltaTime;
+        }
+    }
+
+    void attackNormal()
+    {
+        anim.SetTrigger("attack");
+        if (attackDelayActive <= 0f)
+        {
+            atkObj1.SetActive(true);
+            atkObj2.SetActive(true);
+            attackDurationActive = attackDuration;
+        }
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.Stop();
         }
     }
 }

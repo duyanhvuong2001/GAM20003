@@ -45,18 +45,7 @@ public class PlayerAttackBishop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (attackDelayActive <= 0f && charges > 0 && attackDurationActive! <= 0f)
-            {
-                atkObjNE1.SetActive(true);
-                atkObjSE1.SetActive(true);
-                atkObjSW1.SetActive(true);
-                atkObjNW1.SetActive(true);
-                attackDurationActive = attackDuration;
-                charges -= 1;
-            }
-        }
+        
 
         if (attackDurationActive < 0.3f && attackDurationActive > 0f)
         {
@@ -102,8 +91,17 @@ public class PlayerAttackBishop : MonoBehaviour
         }
     }
 
-    void setCharges(int i)
+    public bool attackBishop()
     {
-        charges = i;
+        if (attackDelayActive <= 0f && attackDurationActive! <= 0f)
+        {
+            atkObjNE1.SetActive(true);
+            atkObjSE1.SetActive(true);
+            atkObjSW1.SetActive(true);
+            atkObjNW1.SetActive(true);
+            attackDurationActive = attackDuration;
+            return true;
+        }
+        else { return false; }
     }
 }

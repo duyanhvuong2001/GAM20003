@@ -45,19 +45,7 @@ public class PlayerAttackRook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            if (attackDelayActive <= 0f && charges > 0 && attackDurationActive <= 0f)
-            {
-                atkObjN1.SetActive(true);
-                atkObjE1.SetActive(true);
-                atkObjS1.SetActive(true);
-                atkObjW1.SetActive(true);
-                attackDurationActive = attackDuration;
-                charges -= 1;
-            }
-        }
-
+        
         if (attackDurationActive < 0.3f && attackDurationActive > 0f)
         {
             atkObjN2.SetActive(true);
@@ -100,5 +88,19 @@ public class PlayerAttackRook : MonoBehaviour
         {
             attackDelayActive -= 1f * Time.deltaTime;
         }
+    }
+
+    public bool attackRook()
+    {
+        if (attackDelayActive <= 0f && charges > 0 && attackDurationActive <= 0f)
+        {
+            atkObjN1.SetActive(true);
+            atkObjE1.SetActive(true);
+            atkObjS1.SetActive(true);
+            atkObjW1.SetActive(true);
+            attackDurationActive = attackDuration;
+            return true;
+        }
+        else { return false; }
     }
 }
