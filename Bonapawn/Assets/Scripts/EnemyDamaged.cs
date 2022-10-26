@@ -67,7 +67,7 @@ public class EnemyDamaged : MonoBehaviour
             }
             delay = 20f;
 
-            //gameObject.GetComponent<KnockBack>().KnockedBack();
+            gameObject.GetComponent<KnockBack>().KnockedBack();
         }
     }
 }
