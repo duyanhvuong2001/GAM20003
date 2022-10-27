@@ -11,6 +11,7 @@ public class EnemyDamaged : MonoBehaviour
     private GameObject UI;
     private GameObject Damaged;
     private float delay;
+    public Vector3 lastMovePos;
 
 
 
@@ -67,7 +68,18 @@ public class EnemyDamaged : MonoBehaviour
             }
             delay = 20f;
 
-            gameObject.GetComponent<KnockBack>().KnockedBack();
+            gameObject.GetComponent<Animator>().SetTrigger("dmg");
+            lastMovePos = GetComponent<ChessPiece>().lastMovePos;
+            // lastMovePos = new Vector3(-1,1,1);
+
+            GetComponent<ChessPiece>().lastMove = 0f;
+            GetComponent<ChessPiece>().currentState = ENEMY_STATES.WAIT;
+            transform.position = Vector3.MoveTowards(transform.position, lastMovePos, 10f);
+
+
+            // Debug.Log("Sonja " +lastMovePos);
+            //gameObject.GetComponent<KnockBack>().KnockedBack();
+        
         }
     }
 }

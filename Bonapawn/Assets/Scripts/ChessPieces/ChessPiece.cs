@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public abstract class ChessPiece : MonoBehaviour
 {
+    public Vector3 lastMovePos;
     //Private properties
     private string pieceName;
     protected List<ChessBehaviour> behaviours;
@@ -17,14 +18,14 @@ public abstract class ChessPiece : MonoBehaviour
 
     //Protected properties 
     protected bool isAlive;
-    protected ENEMY_STATES currentState;
+    public ENEMY_STATES currentState;
     protected int health = 5;
     protected List<Path> pathMemory;
 
     //Enemy logic
     public float scoutRadius;
     protected bool playerDetected;
-    protected float lastMove;
+    public float lastMove;
     protected float moveCooldown;
     protected Vector3 playerCoordinates;
     protected Vector3 headingLocation;
@@ -57,7 +58,7 @@ public abstract class ChessPiece : MonoBehaviour
         {
             paths.AddRange(behaviour.ExploreAvailablePaths(transform.position, boxCollider));
         }
-        Debug.Log(paths.Count);
+        // Debug.Log(paths.Count);
 
         paths = FilterPaths(paths);
         return paths;;
@@ -74,8 +75,8 @@ public abstract class ChessPiece : MonoBehaviour
                 
                 if (memoryPath.Location.ToString() == path.Location.ToString())
                 {
-                    Debug.Log("CDD" + path.Location.ToString());
-                    Debug.Log("MEMORY" + memoryPath.Location.ToString());
+                    // Debug.Log("CDD" + path.Location.ToString());
+                    // Debug.Log("MEMORY" + memoryPath.Location.ToString());
                     filteredPaths.Add(path);
                 }
             }
@@ -85,7 +86,7 @@ public abstract class ChessPiece : MonoBehaviour
         {
             paths.Remove(path);
         }
-        Debug.Log(paths.Count);
+        // Debug.Log(paths.Count);
 
         return paths;
     }
@@ -99,7 +100,7 @@ public abstract class ChessPiece : MonoBehaviour
         }
 
         pathMemory.Add(targetPosition);
-        Debug.Log(pathMemory.Count);
+        // Debug.Log(pathMemory.Count);
     }
 
     protected Path FindOptimizedPath(List<Path> paths, Vector3 destination)
@@ -114,7 +115,7 @@ public abstract class ChessPiece : MonoBehaviour
             {
                 maxUtilityValue = pathUtility;
                 optimizedPath = paths[i];
-                Debug.Log(maxUtilityValue);
+                // Debug.Log(maxUtilityValue);
             }
         }
 
@@ -151,11 +152,11 @@ public abstract class ChessPiece : MonoBehaviour
         return utilityPoint;
 
     }
-    protected void UpdatePosition(Vector3 destination)
+    public void UpdatePosition(Vector3 destination)
     {
         float deltaX = destination.x - transform.position.x;
         
-        if(deltaX>0){
+        if(deltaX > 0){
             transform.localScale = new Vector3(-1,1,1);
         }
         else
@@ -192,9 +193,11 @@ public abstract class ChessPiece : MonoBehaviour
                     if(Time.time - lastMove > moveCooldown)//If finished the cooldown
                     {
                         state = ENEMY_STATES.LOCATE_PLAYER;
+                        Debug.Log("WAIT");
                     }
                     else
                     {
+                        lastMovePos = transform.position;
                         state = ENEMY_STATES.WAIT;
                     }
                     break;
@@ -206,6 +209,7 @@ public abstract class ChessPiece : MonoBehaviour
                     if(playerDetected)
                     {
                         headingLocation = playerCoordinates;
+                        Debug.Log("SCOUT");
                     }
                     else
                     {
@@ -250,7 +254,6 @@ public abstract class ChessPiece : MonoBehaviour
                         if (transform.position != targetPosition.Location)
                         {
                             UpdatePosition(targetPosition.Location);
-
 
                             state = ENEMY_STATES.MOVE_CHESS_PIECE;
                         }
