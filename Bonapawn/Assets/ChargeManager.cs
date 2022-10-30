@@ -51,18 +51,4 @@ public class ChargeManager : MonoBehaviour
             }
         }
     }
-
-    void addCharges(int rook, int bishop, int knight)
-    {
-        rookCharges += rook;
-        bishopCharges += bishop;
-        knightCharges += knight;
-    }
-
-    void removeCharges(int rook, int bishop, int knight)
-    {
-        rookCharges -= rook;
-        bishopCharges -= bishop;
-        knightCharges -= knight;
-    }
 }
