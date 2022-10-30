@@ -15,6 +15,7 @@ public class DialogManagerInk : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    //[SerializeField] private Text piece;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -24,6 +25,10 @@ public class DialogManagerInk : MonoBehaviour
     public Animator animator;
 
     private Story currentStory;
+    
+    public string piece;
+
+    public ChargeManager chargers;
 
     public bool dialogueIsPlaying{ get; private set;}
 
@@ -41,6 +46,10 @@ public class DialogManagerInk : MonoBehaviour
     public static DialogManagerInk GetInstance()
     {
         return instance;
+    }
+
+    public void setPiece(string NewPiece){
+        piece = NewPiece;
     }
 
     private void Start()
@@ -90,7 +99,6 @@ public class DialogManagerInk : MonoBehaviour
 
     public void ExitDialogueMode()
     {
-        
         animator.SetBool("IsOpen", false);
         dialogueIsPlaying = false;
         Debug.Log("exit dialogue");
@@ -109,6 +117,8 @@ public class DialogManagerInk : MonoBehaviour
         }
         else
         {
+            Debug.Log(piece);
+            powerUp(piece);
             ExitDialogueMode();
         }
     }
@@ -156,5 +166,22 @@ public class DialogManagerInk : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+    }
+
+    public void powerUp(string NPCPostion){
+    
+        if (NPCPostion == "knight"){
+            //chargers.knightCharges ++;
+            chargers.GetComponent<ChargeManager>().knightCharges ++;
+        }
+        else if (NPCPostion == "bishop"){
+           // chargers.bishopCharges ++;
+           chargers.GetComponent<ChargeManager>().bishopCharges ++;
+        }
+        else if (NPCPostion == "rook"){
+           //chargers.rookCharges ++;
+           chargers.GetComponent<ChargeManager>().rookCharges ++;
+        }
+
     }
 }

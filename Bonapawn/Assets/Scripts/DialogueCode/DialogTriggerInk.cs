@@ -13,6 +13,10 @@ public class DialogTriggerInk : MonoBehaviour
     [Header("Name")]
     [SerializeField] public string name;
 
+    
+    [Header("Piece")]
+    [SerializeField] public string piece;
+
   
 
 
@@ -27,6 +31,8 @@ public class DialogTriggerInk : MonoBehaviour
     public void TriggerDialogue()
     {
         FindObjectOfType<DialogManagerInk>().EnterDialogueMode(InkJSON, name);
+        FindObjectOfType<DialogManagerInk>().setPiece(piece);
+
         //Debug.Log(name);
         //Debug.Log(InkJSON.text);
     }

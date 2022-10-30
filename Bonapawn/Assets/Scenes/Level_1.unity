@@ -5317,7 +5317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 814037879}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
-  name: Tim the Pawn
+  name: Tim the Rook
+  piece: rook
 --- !u!61 &271695793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6869,6 +6870,7 @@ MonoBehaviour:
   visualCue: {fileID: 2066832514}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &337026676
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13572,6 +13574,7 @@ MonoBehaviour:
   - {fileID: 884610210}
   - {fileID: 1572702468}
   animator: {fileID: 1914076868}
+  piece: 
 --- !u!4 &678307866
 Transform:
   m_ObjectHideFlags: 0
@@ -13972,6 +13975,7 @@ MonoBehaviour:
   visualCue: {fileID: 2066832514}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: knight
 --- !u!61 &725052915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14237,6 +14241,7 @@ MonoBehaviour:
   visualCue: {fileID: 2066832514}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &740466563
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50620,6 +50625,7 @@ MonoBehaviour:
   visualCue: {fileID: 606820861}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Helen the Pawn
+  piece: 
 --- !u!61 &807732885
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50694,6 +50700,7 @@ MonoBehaviour:
   visualCue: {fileID: 2066832514}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &813092209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58429,6 +58436,7 @@ MonoBehaviour:
   visualCue: {fileID: 2066832514}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &1091967638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -62846,7 +62854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d0d069aaaaf0e4f945fc54e3a6c650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 1636097138}
 --- !u!4 &1285653825
 Transform:
   m_ObjectHideFlags: 0
@@ -73894,7 +73902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 2066832514}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
-  name: Greg the Pawn
+  name: Greg the Bishop
+  piece: bishop
 --- !u!61 &1873990132
 BoxCollider2D:
   m_ObjectHideFlags: 0
