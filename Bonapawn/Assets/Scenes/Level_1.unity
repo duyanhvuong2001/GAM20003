@@ -13575,6 +13575,7 @@ MonoBehaviour:
   - {fileID: 1572702468}
   animator: {fileID: 1914076868}
   piece: 
+  chargers: {fileID: 0}
 --- !u!4 &678307866
 Transform:
   m_ObjectHideFlags: 0
@@ -53069,7 +53070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f9a6e9ac2567c49a6892c59dbaec5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 10
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
 --- !u!61 &852053883

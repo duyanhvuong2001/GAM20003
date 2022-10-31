@@ -1,10 +1,10 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 public abstract class ChessPiece : MonoBehaviour
 {
-    public Vector3 lastMovePos;
     //Private properties
+    public Vector3 lastMovePos;
     private string pieceName;
     protected List<ChessBehaviour> behaviours;
 
@@ -50,7 +50,28 @@ public abstract class ChessPiece : MonoBehaviour
         scoutStart = transform.position;
         scoutEnd = scoutPointGO.transform.position;
     }
-
+    public Path TargetPos
+    {
+        get
+        {
+            return targetPosition;
+        }
+    }
+    public Vector3 ScoutEndPoint
+    {
+        get
+        {
+            return scoutEnd;
+        }
+    }
+    
+    public float MoveCD
+    {
+        get
+        {
+            return moveCooldown;
+        }
+    }
     protected List<Path> FindPaths()
     {
         List<Path> paths = new List<Path>();
@@ -177,111 +198,36 @@ public abstract class ChessPiece : MonoBehaviour
 
     //Update function
 
-    protected virtual void FixedUpdate()
+   
+
+    public void SetLastMove(float time)
     {
-        ENEMY_STATES state = currentState;
-        //Debug.Log(state);
-        if (isAlive)
-        {
-            //Act based on current state
-            switch(state)
-            {
-                case ENEMY_STATES.DIE:
-                    isAlive = false;
-                    break;
-                case ENEMY_STATES.WAIT:
-                    if(Time.time - lastMove > moveCooldown)//If finished the cooldown
-                    {
-                        state = ENEMY_STATES.LOCATE_PLAYER;
-                        Debug.Log("WAIT");
-                    }
-                    else
-                    {
-                        lastMovePos = transform.position;
-                        state = ENEMY_STATES.WAIT;
-                    }
-                    break;
-                case ENEMY_STATES.LOCATE_PLAYER:
-                    playerCoordinates = GameManager.instance.playerTransform.position;
-                    state = ENEMY_STATES.SCOUT;
-                    break;
-                case ENEMY_STATES.SCOUT:
-                    if(playerDetected)
-                    {
-                        headingLocation = playerCoordinates;
-                        Debug.Log("SCOUT");
-                    }
-                    else
-                    {
-                        if (Vector3.Distance(transform.position, playerCoordinates) < 4.0f)
-                        {
-                            headingLocation = playerCoordinates;
-                            playerDetected = true;
-                        }
-                        else
-                        {
-                            headingLocation = scoutEnd;
-                        }
-                    }
-                   
-               
-                    state = ENEMY_STATES.FIND_PATH;
-                    break;
-               
-                case ENEMY_STATES.LOCATE_SCOUT_POINT:
-                    state = ENEMY_STATES.FIND_PATH;
-                    break;
-                case ENEMY_STATES.FIND_PATH:
-                    //First find all possible paths
-                    List<Path> availablePaths = FindPaths();
+        lastMove = time;
+    }
 
-                    //Use those paths to find the most optimized one
-                    Path mostOptimizedPath = FindOptimizedPath(availablePaths, headingLocation);
+    public Vector3 LocatePlayer()
+    {
+        return playerCoordinates = GameManager.instance.playerTransform.position;
+    }
 
-                    //Set the target to this path
-                    targetPosition = mostOptimizedPath;
+    public void SetHeadingLocation(Vector3 location)
+    {
+        headingLocation = location;
+    }
 
-                    //Store the path to the enemy's memory
-                    UpdatePathMemory();
+    public void FindPath()
+    {
+        //First find all possible paths
+        List<Path> availablePaths = FindPaths();
 
-                    //set the next state
-                    state = ENEMY_STATES.MOVE_CHESS_PIECE;
+        //Use those paths to find the most optimized one
+        Path mostOptimizedPath = FindOptimizedPath(availablePaths, headingLocation);
 
-                    break;
-                case ENEMY_STATES.MOVE_CHESS_PIECE:
-                    if(targetPosition!=null)
-                    {
-                        if (transform.position != targetPosition.Location)
-                        {
-                            UpdatePosition(targetPosition.Location);
+        //Set the target to this path
+        targetPosition = mostOptimizedPath;
 
-                            state = ENEMY_STATES.MOVE_CHESS_PIECE;
-                        }
-                        else
-                        {
-    
-                            lastMove = Time.time;
-
-
-
-                            state = ENEMY_STATES.WAIT;
-                        }
-                        
-                    }
-                    else
-                    {
-                        state = ENEMY_STATES.WAIT;
-                    }
-                    break;
-            }
-
-            //Finally update the current state
-            currentState = state;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //Store the path to the enemy's memory
+        UpdatePathMemory();
     }
 }
 
@@ -291,9 +237,9 @@ public enum ENEMY_STATES
     WAIT,
     SCOUT,
     LOCATE_SCOUT_POINT,
-    SWAP_SCOUTING_POINT,
     LOCATE_PLAYER,
     FIND_PATH,
+    KNOCKED_BACK,
     MOVE_CHESS_PIECE,
     DIE
 }
