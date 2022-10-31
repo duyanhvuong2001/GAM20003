@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.ChessPieces;
+using UnityEngine.SceneManagement;
 
 public class EnemyDamaged : MonoBehaviour
 {
@@ -57,6 +58,13 @@ public class EnemyDamaged : MonoBehaviour
     //    }
     //}
 
+    // public int Respawn = SceneManager.GetActiveScene().buildIndex;
+    // void OnCollisionEnter2D(Collision2D other){
+    //     if(other.gameObject.tag.Equals("Player")){
+    //         SceneManager.LoadScene(Respawn);
+    //     }
+    // }
+
     private void TakeDamage(int dmg)
     {
         if (delay <= 0)
@@ -81,8 +89,6 @@ public class EnemyDamaged : MonoBehaviour
             
 
 
-            // Debug.Log("Sonja " +lastMovePos);
-            //gameObject.GetComponent<KnockBack>().KnockedBack();
         
         }
     }

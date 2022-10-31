@@ -27,6 +27,7 @@ public class pDamaged : MonoBehaviour
         {
             Debug.Log("collided w enemy");
             gameController.TakeDamage();
+
         }
     }
 }

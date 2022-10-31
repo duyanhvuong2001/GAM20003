@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameplayController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameplayController : MonoBehaviour
     private int playerLives;
 
     public Text lifeText;
-    private string lifeOutput = "Lives - ";
+    //private string lifeOutput = "Lives - ";
     private int damageDelay = 0;
 
     private GameObject playerObject;
@@ -19,12 +20,14 @@ public class GameplayController : MonoBehaviour
     public Text rookText;
     public Text bishopText;
     public Text knightText;
+    public GameObject[] hearts;
+    public int respawn;
 
     // Start is called before the first frame update
     void Start()
     {
         playerLives = maxLives;
-        lifeText.text = lifeOutput + playerLives;
+        //lifeText.text = lifeOutput + playerLives;
 
         playerObject = GameObject.Find("playerUpdated");
         playerBase = GameObject.Find("base");
@@ -55,14 +58,20 @@ public class GameplayController : MonoBehaviour
     {
         if (damageDelay <= 0)
         {
-            playerLives--;
-            damageDelay = 30;
+            Destroy(hearts[playerLives-1].gameObject);
+            if(playerLives>1){
+                playerLives--;
+                damageDelay = 30;
+            } else{
+                respawn = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(respawn);
+            }
         }
     }
 
     private void setText()
     {
-        lifeText.text = lifeOutput + playerLives;
+        //lifeText.text = lifeOutput + playerLives;
         rookText.text = chargeMan.rookCharges.ToString();
         bishopText.text = chargeMan.bishopCharges.ToString();
         knightText.text = chargeMan.knightCharges.ToString();
