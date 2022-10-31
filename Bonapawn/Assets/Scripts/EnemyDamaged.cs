@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts;
+using Assets.Scripts.ChessPieces;
 
 public class EnemyDamaged : MonoBehaviour
 {
@@ -12,6 +12,8 @@ public class EnemyDamaged : MonoBehaviour
     private GameObject Damaged;
     private float delay;
     public Vector3 lastMovePos;
+    [SerializeField] private StateManager stateManager;
+    [SerializeField] private ChessPiece enemy;
 
 
 
@@ -68,13 +70,15 @@ public class EnemyDamaged : MonoBehaviour
             }
             delay = 20f;
 
+            //Set animation
             gameObject.GetComponent<Animator>().SetTrigger("dmg");
-            lastMovePos = GetComponent<ChessPiece>().lastMovePos;
-            // lastMovePos = new Vector3(-1,1,1);
 
-            GetComponent<ChessPiece>().lastMove = 0f;
-            GetComponent<ChessPiece>().currentState = ENEMY_STATES.WAIT;
-            transform.position = Vector3.MoveTowards(transform.position, lastMovePos, 10f);
+            //Set push force
+            enemy.knockedBackDirection = (GameManager.instance.playerTransform.position - transform.position).normalized * dmg*0.1f;
+
+            //Set enemy State
+            stateManager.SetState(ENEMY_STATES.KNOCKED_BACK);
+            
 
 
             // Debug.Log("Sonja " +lastMovePos);

@@ -22,7 +22,7 @@ namespace Assets.Scripts.ChessPieces
             }
             else
             {
-                if(Vector3.Distance(Enemy.transform.position, GameManager.instance.transform.position) < 4.0f)
+                if(Vector3.Distance(Enemy.transform.position, GameManager.instance.playerTransform.position) < 4.0f)
                 {
                     Enemy.SetHeadingLocation(Enemy.LocatePlayer());
                     playerDetected = true;

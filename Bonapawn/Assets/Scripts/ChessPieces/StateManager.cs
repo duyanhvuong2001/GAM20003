@@ -23,6 +23,8 @@ namespace Assets.Scripts.ChessPieces
         FindPath findPathState;
         Move moveState;
         KnockedBackState knockedBackState;
+
+        ENEMY_STATES currentStateEnum;
         
         private void Awake()
         {
@@ -37,11 +39,9 @@ namespace Assets.Scripts.ChessPieces
             currentState = waitState;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            ENEMY_STATES state = currentState.UpdateState();
-
-            switch (state)
+            switch (currentStateEnum)
             {
                 case ENEMY_STATES.WAIT:
                     currentState = waitState;
@@ -59,9 +59,22 @@ namespace Assets.Scripts.ChessPieces
                     currentState = moveState;
                     break;
                 case ENEMY_STATES.KNOCKED_BACK:
+                    currentState = knockedBackState;
                     break;
             }
+            currentStateEnum = currentState.UpdateState();
+            Debug.Log(currentStateEnum.ToString());
         }
+
+
+
+        public void SetState(ENEMY_STATES state)
+        {
+            currentStateEnum = state;
+            Debug.Log("KNOCKED");
+        }
+
+
 
     }
 }

@@ -35,6 +35,11 @@ public abstract class ChessPiece : MonoBehaviour
     protected Path targetPosition;
     const int MAX_PATH_MEMORY_CAPACITY = 10;
 
+    //knocked back logic
+    public Vector3 knockedBackDirection;
+    private float knockedBackForce;
+    public float knockedBackRecoverySpeed;
+
     //Set-up Awake functions
     protected virtual void Awake()
     {
@@ -233,7 +238,6 @@ public abstract class ChessPiece : MonoBehaviour
 
 public enum ENEMY_STATES
 {
-
     WAIT,
     SCOUT,
     LOCATE_SCOUT_POINT,
