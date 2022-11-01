@@ -24,6 +24,8 @@ public class GameplayController : MonoBehaviour
     public GameObject[] hearts;
     public int respawn;
 
+    public Image dImg;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,9 @@ public class GameplayController : MonoBehaviour
 
         if (playerObject != null)
         { pMove = playerObject.GetComponent<PlayerMovement>(); }
+
+        if (dImg != null)
+        { dImg.color = new Color(dImg.color.r, dImg.color.g, dImg.color.b, 0f); }
 
     }
 
@@ -55,6 +60,16 @@ public class GameplayController : MonoBehaviour
 
         setText();
 
+        if (dImg != null)
+        {
+            var tempColor = dImg.color;
+            if (tempColor.a > 0f)
+            {
+                tempColor.a -= 0.02f;
+                dImg.color = tempColor;
+            }
+        }
+
     }
 
     public void TakeDamage()
@@ -63,8 +78,13 @@ public class GameplayController : MonoBehaviour
         {
             Destroy(hearts[playerLives-1].gameObject);
             if(playerLives>1){
+                //reduce lives
                 playerLives--;
+                //knocks player back
                 pMove.pKnockback();
+                //makes the damage overlay image visible
+                dImg.color = new Color(dImg.color.r, dImg.color.g, dImg.color.b, 0.3f);
+                //starts player invuln time
                 damageDelay = 30;
             } else{
                 respawn = SceneManager.GetActiveScene().buildIndex;

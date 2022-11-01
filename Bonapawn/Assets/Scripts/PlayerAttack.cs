@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
 
             transform.eulerAngles = new Vector3(
@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
            );
         }
         
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             transform.eulerAngles = new Vector3(
                  transform.eulerAngles.x,
@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             transform.eulerAngles = new Vector3(
                  transform.eulerAngles.x,
@@ -59,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
             );
         }
         
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             transform.eulerAngles = new Vector3(
                  transform.eulerAngles.x,
