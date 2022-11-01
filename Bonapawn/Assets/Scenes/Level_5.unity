@@ -40733,7 +40733,7 @@ MonoBehaviour:
   - {fileID: 1998112146}
   animator: {fileID: 1640242584}
   piece: 
-  chargers: {fileID: 0}
+  chargers: {fileID: 554404443}
 --- !u!4 &360128363
 Transform:
   m_ObjectHideFlags: 0
@@ -43896,6 +43896,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &554404443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2009928867, guid: bde4bbf321b82d74aa9aca453e157db3,
+    type: 3}
+  m_PrefabInstance: {fileID: 554404438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bb438d0feeda34badbd25342be625e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &563757711
 GameObject:
   m_ObjectHideFlags: 0
@@ -48906,8 +48918,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 141812981}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
-  name: Tim the Pawn
-  piece: 
+  name: Kevin the Knight
+  piece: Knight
 --- !u!61 &1234858178
 BoxCollider2D:
   m_ObjectHideFlags: 0

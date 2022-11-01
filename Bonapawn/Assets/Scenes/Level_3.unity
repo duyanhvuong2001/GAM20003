@@ -5862,6 +5862,8 @@ MonoBehaviour:
   - {fileID: 1054836193}
   - {fileID: 1021177261}
   animator: {fileID: 1149656332}
+  piece: 
+  chargers: {fileID: 1587806888}
 --- !u!4 &227802408
 Transform:
   m_ObjectHideFlags: 0
@@ -7203,6 +7205,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 1541209700}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &317103288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7218,6 +7222,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &317103289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60625,6 +60631,7 @@ MonoBehaviour:
   visualCue: {fileID: 1426474112}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Tim the Pawn
+  piece: 
 --- !u!61 &589180201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60980,6 +60987,7 @@ MonoBehaviour:
   visualCue: {fileID: 832549865}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &603238002
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63768,6 +63776,7 @@ MonoBehaviour:
   visualCue: {fileID: 832549865}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &758213473
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65700,6 +65709,7 @@ MonoBehaviour:
   visualCue: {fileID: 832549865}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &850452888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73135,6 +73145,7 @@ MonoBehaviour:
   visualCue: {fileID: 832549865}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &1123323790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -83146,6 +83157,7 @@ MonoBehaviour:
   visualCue: {fileID: 832549865}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &1507635181
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87008,6 +87020,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1587806888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2009928867, guid: bde4bbf321b82d74aa9aca453e157db3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1587806883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bb438d0feeda34badbd25342be625e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1588907632
 GameObject:
   m_ObjectHideFlags: 0
@@ -88564,6 +88588,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 989483458}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &1652535194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88579,6 +88605,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &1652535195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -91845,6 +91873,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 1392381330}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &1776766200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91860,6 +91890,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &1776766201
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -92434,6 +92466,7 @@ MonoBehaviour:
   visualCue: {fileID: 832549865}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Greg the Pawn
+  piece: 
 --- !u!61 &1796375285
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94036,6 +94069,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 1787850708}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &1881998256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94051,6 +94086,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &1881998257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95076,6 +95113,7 @@ MonoBehaviour:
   visualCue: {fileID: 1405420152}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Helen the Pawn
+  piece: 
 --- !u!61 &1904679968
 BoxCollider2D:
   m_ObjectHideFlags: 0
