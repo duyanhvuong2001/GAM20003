@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask MovementStop;
 
+    Vector3 Adjustment = new Vector3(0,0,0);
+    Vector3 AdjustmentTemp = new Vector3(0, 0, 0);
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -75,7 +79,13 @@ public class PlayerMovement : MonoBehaviour
 
         while((newPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
+            if (Adjustment != AdjustmentTemp)
+            {
+                newPos += Adjustment;
+                Adjustment = AdjustmentTemp;
+            }
             transform.position = Vector3.MoveTowards(transform.position, newPos, moveSpeed * Time.fixedDeltaTime);
+            
             yield return null;
         }
         transform.position = newPos;
@@ -89,5 +99,17 @@ public class PlayerMovement : MonoBehaviour
 		facingRight = !facingRight;
 		transform.Rotate(0f, 180f, 0f);
 	}
+
+    public void pKnockback()
+    {
+        if (walking)
+        {
+            Adjustment -= transform.right * 3;
+        }
+        else
+        {
+            StartCoroutine(Move(transform.position -= transform.right * 2));
+        }
+    }
 
 }

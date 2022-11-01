@@ -16,6 +16,7 @@ public class GameplayController : MonoBehaviour
     private GameObject playerObject;
     private GameObject playerBase;
     private ChargeManager chargeMan;
+    private PlayerMovement pMove;
 
     public Text rookText;
     public Text bishopText;
@@ -34,6 +35,8 @@ public class GameplayController : MonoBehaviour
         if (playerBase != null)
         { chargeMan = playerBase.GetComponent<ChargeManager>(); }
 
+        if (playerObject != null)
+        { pMove = playerObject.GetComponent<PlayerMovement>(); }
 
     }
 
@@ -61,6 +64,7 @@ public class GameplayController : MonoBehaviour
             Destroy(hearts[playerLives-1].gameObject);
             if(playerLives>1){
                 playerLives--;
+                pMove.pKnockback();
                 damageDelay = 30;
             } else{
                 respawn = SceneManager.GetActiveScene().buildIndex;
