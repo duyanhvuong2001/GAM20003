@@ -472,6 +472,7 @@ MonoBehaviour:
   visualCue: {fileID: 1258604420}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Helen the Pawn
+  piece: 
 --- !u!61 &40596136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -36410,7 +36411,7 @@ Transform:
   - {fileID: 1068613417}
   - {fileID: 1784683442}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &70120858
 GameObject:
@@ -40065,6 +40066,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 1045627172}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &300724831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40080,6 +40083,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &300724832
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40727,6 +40732,8 @@ MonoBehaviour:
   - {fileID: 1034635262}
   - {fileID: 1998112146}
   animator: {fileID: 1640242584}
+  piece: 
+  chargers: {fileID: 0}
 --- !u!4 &360128363
 Transform:
   m_ObjectHideFlags: 0
@@ -40775,7 +40782,7 @@ Transform:
   - {fileID: 1597647616}
   - {fileID: 1056970454}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &412066257
 GameObject:
@@ -41571,7 +41578,7 @@ Transform:
   m_Children:
   - {fileID: 48495449}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &554404438
 PrefabInstance:
@@ -44243,6 +44250,7 @@ MonoBehaviour:
   visualCue: {fileID: 1252891103}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &627570493
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44306,7 +44314,7 @@ Transform:
   - {fileID: 514377780}
   - {fileID: 2020529354}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654935063
 GameObject:
@@ -44489,6 +44497,7 @@ MonoBehaviour:
   visualCue: {fileID: 1252891103}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &700139705
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44881,7 +44890,7 @@ Transform:
   - {fileID: 1852160053}
   - {fileID: 1416572952}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &748294166
 GameObject:
@@ -46089,7 +46098,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965962342
 GameObject:
@@ -47298,6 +47307,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 1416572953}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &1056970456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47313,6 +47324,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &1056970457
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48894,6 +48907,7 @@ MonoBehaviour:
   visualCue: {fileID: 141812981}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Tim the Pawn
+  piece: 
 --- !u!61 &1234858178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50005,6 +50019,7 @@ MonoBehaviour:
   visualCue: {fileID: 1252891103}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Greg the Pawn
+  piece: 
 --- !u!61 &1344830746
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50852,6 +50867,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 1946305022}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &1440323098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50867,6 +50884,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &1440323099
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52601,6 +52620,7 @@ MonoBehaviour:
   visualCue: {fileID: 1252891103}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &1591342629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52685,6 +52705,8 @@ MonoBehaviour:
   scoutRadius: 0
   lastMove: 0
   scoutPointGO: {fileID: 1852160054}
+  knockedBackDirection: {x: 0, y: 0, z: 0}
+  knockedBackRecoverySpeed: 0
 --- !u!114 &1597647618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52700,6 +52722,8 @@ MonoBehaviour:
   health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
+  stateManager: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!61 &1597647619
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53018,7 +53042,7 @@ Transform:
   - {fileID: 716358461}
   - {fileID: 1566646609}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653676731
 GameObject:
@@ -54052,6 +54076,7 @@ MonoBehaviour:
   visualCue: {fileID: 1252891103}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &1755807261
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55164,6 +55189,7 @@ MonoBehaviour:
   visualCue: {fileID: 1252891103}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Kevin the Knight
+  piece: 
 --- !u!61 &1889013665
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -55190,135 +55216,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
---- !u!1 &1889648790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1889648792}
-  - component: {fileID: 1889648791}
-  m_Layer: 0
-  m_Name: Audio Source
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &1889648791
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889648790}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 8932095847687199114, guid: c5dce433ef630834a880145a7c438658,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: f4ec03caa29683f4895bf1644508ad25, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.499
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &1889648792
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889648790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4626746, y: 15.167772, z: 0.05649761}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1899623553
 GameObject:
   m_ObjectHideFlags: 0
@@ -55461,7 +55358,7 @@ Transform:
   - {fileID: 232185111}
   - {fileID: 1005863947}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1921262192
 GameObject:
@@ -58525,5 +58422,5 @@ Transform:
   - {fileID: 720371049}
   - {fileID: 1871155097}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

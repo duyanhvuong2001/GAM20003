@@ -41,6 +41,10 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        if (GameObject.Find("testAudio"))
+        {
+            Destroy(GameObject.Find("testAudio"));
+        }
         Debug.Log("Loading Menu....");
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
