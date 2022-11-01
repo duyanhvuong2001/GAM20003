@@ -87,6 +87,10 @@ public class GameplayController : MonoBehaviour
                 //starts player invuln time
                 damageDelay = 30;
             } else{
+                if (GameObject.Find("testAudio"))
+                {
+                    Destroy(GameObject.Find("testAudio"));
+                }
                 respawn = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(respawn);
             }
