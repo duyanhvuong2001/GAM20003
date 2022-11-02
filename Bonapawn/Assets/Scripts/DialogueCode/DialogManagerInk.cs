@@ -107,6 +107,26 @@ public class DialogManagerInk : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
         GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
+
+        int sum = 0;
+        for (int i = 0; i < allHearts.Length; i++) 
+        {
+            Color a = allHearts[i].GetComponent<Image>().color;
+            if(a.a == 1){
+                sum++;
+                Debug.Log(sum);
+            }
+        }
+        if(sum<5){
+            Color c = allHearts[sum].GetComponent<Image>().color;
+            c.a = 1;
+            allHearts[sum].GetComponent<Image>().color = c;
+
+            GameObject UI = GameObject.Find("UI");
+            UI.GetComponent<GameplayController>().playerLives++;
+            Debug.Log(UI.GetComponent<GameplayController>().playerLives);
+
+        }
     }
 
     public void ContinueStory()

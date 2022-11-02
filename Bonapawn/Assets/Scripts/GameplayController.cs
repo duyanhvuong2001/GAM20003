@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameplayController : MonoBehaviour
 {
     public int maxLives = 3;
-    private int playerLives;
+    public int playerLives;
 
     public Text lifeText;
     //private string lifeOutput = "Lives - ";
@@ -22,6 +22,7 @@ public class GameplayController : MonoBehaviour
     public Text bishopText;
     public Text knightText;
     public GameObject[] hearts;
+
     public int respawn;
 
     public Image dImg;
@@ -84,8 +85,13 @@ public class GameplayController : MonoBehaviour
     {
         if (damageDelay <= 0)
         {
-            
-            Destroy(hearts[playerLives-1].gameObject);
+
+            //Destroy(hearts[playerLives-1].gameObject);
+
+            Color a = hearts[playerLives-1].gameObject.GetComponent<Image>().color;
+            a.a = 1;
+            hearts[playerLives-1].gameObject.GetComponent<Image>().color = a;
+
             if(playerLives>1){
                 //reduce lives
                 playerLives--;
