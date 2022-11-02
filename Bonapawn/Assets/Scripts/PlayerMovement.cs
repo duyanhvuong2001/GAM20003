@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveSpeed = 1;
+    private float moveSpeed = 3;
     private bool walking;
 
     private Rigidbody2D rb;
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
                 newPos += Adjustment;
                 Adjustment = AdjustmentTemp;
             }
-            transform.position = Vector3.MoveTowards(transform.position, newPos, moveSpeed * Time.fixedDeltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, newPos, moveSpeed * Time.deltaTime);
             
             yield return null;
         }
