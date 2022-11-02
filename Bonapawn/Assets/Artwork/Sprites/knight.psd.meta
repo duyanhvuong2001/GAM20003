@@ -112,7 +112,7 @@ TextureImporter:
         width: 166
         height: 167
       alignment: 9
-      pivot: {x: 0.5, y: 0.3566001}
+      pivot: {x: 0.61880606, y: 0.37347138}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,10 +128,10 @@ TextureImporter:
       name: knight_1
       rect:
         serializedVersion: 2
-        x: 250
-        y: 215
-        width: 189
-        height: 171
+        x: 229
+        y: 203
+        width: 227
+        height: 194
       alignment: 9
       pivot: {x: 0.5223605, y: 0.51296514}
       border: {x: 0, y: 0, z: 0, w: 0}
