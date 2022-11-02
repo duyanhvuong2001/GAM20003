@@ -28899,7 +28899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 510201238}
   InkJSON: {fileID: 4900000, guid: 090da0fef03cc4f4f900e1567909941a, type: 3}
-  name: Ben the Pawn
+  name: Pawnee
   piece: 
 --- !u!61 &1732675858
 BoxCollider2D:
@@ -29073,7 +29073,7 @@ GameObject:
   - component: {fileID: 1788793643}
   - component: {fileID: 1788793642}
   m_Layer: 0
-  m_Name: BenPawn
+  m_Name: Pawnee_Part1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30553,8 +30553,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -177.63, y: -3.9000168}
-  m_SizeDelta: {x: 355.27, y: 30}
+  m_AnchoredPosition: {x: -93.17166, y: -42.67456}
+  m_SizeDelta: {x: 524.2066, y: 59.3599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2001785232
 GameObject:
@@ -30598,10 +30598,10 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8932095847687199114, guid: c5dce433ef630834a880145a7c438658,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f4ec03caa29683f4895bf1644508ad25, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.204
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -31694,7 +31694,7 @@ GameObject:
   - component: {fileID: 2076419391}
   - component: {fileID: 2076419390}
   m_Layer: 0
-  m_Name: NPC (2)
+  m_Name: Pawnee_Part2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31708,7 +31708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076419388}
   m_LocalRotation: {x: 0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -310.17, y: -164.02, z: 0}
+  m_LocalPosition: {x: -301.36, y: -160.31, z: 0}
   m_LocalScale: {x: 0.7305936, y: 0.7305936, z: 0.7305936}
   m_ConstrainProportionsScale: 0
   m_Children:
