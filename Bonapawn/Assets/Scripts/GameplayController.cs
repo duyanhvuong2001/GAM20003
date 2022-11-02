@@ -47,6 +47,8 @@ public class GameplayController : MonoBehaviour
             dImg.enabled = false;
         }
 
+        DontDestroyOnLoad(gameObject);
+
     }
 
     // Update is called once per frame

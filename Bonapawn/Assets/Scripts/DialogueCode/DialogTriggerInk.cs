@@ -55,8 +55,8 @@ public class DialogTriggerInk : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             Debug.Log("enter trigger");
-            Debug.Log(name);
             playerInRange = true;
+            piece = this.transform.parent.tag;
         }
     }
     private void OnTriggerExit2D(Collider2D collider)
