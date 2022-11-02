@@ -88,8 +88,9 @@ public class GameplayController : MonoBehaviour
 
             //Destroy(hearts[playerLives-1].gameObject);
 
+            //Decrease no of displayed hearts
             Color a = hearts[playerLives-1].gameObject.GetComponent<Image>().color;
-            a.a = 1;
+            a.a = 0;
             hearts[playerLives-1].gameObject.GetComponent<Image>().color = a;
 
             if(playerLives>1){
@@ -103,6 +104,7 @@ public class GameplayController : MonoBehaviour
                 //starts player invuln time
                 damageDelay = 30;
             } else{
+                //death
                 if (GameObject.Find("testAudio"))
                 {
                     Destroy(GameObject.Find("testAudio"));
