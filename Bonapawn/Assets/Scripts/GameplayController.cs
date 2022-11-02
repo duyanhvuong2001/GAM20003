@@ -84,6 +84,7 @@ public class GameplayController : MonoBehaviour
     {
         if (damageDelay <= 0)
         {
+            
             Destroy(hearts[playerLives-1].gameObject);
             if(playerLives>1){
                 //reduce lives

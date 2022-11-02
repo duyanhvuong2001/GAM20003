@@ -34,6 +34,8 @@ public class DialogManagerInk : MonoBehaviour
 
     private static DialogManagerInk instance;
 
+    private GameObject[] allHearts;
+
     private void Awake()
     {
         if (instance != null)
@@ -104,6 +106,7 @@ public class DialogManagerInk : MonoBehaviour
         Debug.Log("exit dialogue");
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+        GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
     }
 
     public void ContinueStory()
