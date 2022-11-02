@@ -12,7 +12,7 @@ You're headed to Rookville to take down their weakest link next. We start from t
     -> next2
     
 === next2 ===
-You can, I believe in you BP! But you aren’t alone, many others in this world are on the fence about the royal family…try talking to them and get them on our side. It may take some convincing but you said it yourself, we need all the followers we can get.
+You can, I believe in you BP! But you aren’t alone, many others in this world are on the fence about the royal family…try talking to them and get them on our side. However, it may take some convincing.
     *[Yeah I’ve noticed a lot of dissatisfaction among the town.]
     -> next3
     
