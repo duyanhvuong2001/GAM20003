@@ -41,7 +41,10 @@ public class GameplayController : MonoBehaviour
         { pMove = playerObject.GetComponent<PlayerMovement>(); }
 
         if (dImg != null)
-        { dImg.color = new Color(dImg.color.r, dImg.color.g, dImg.color.b, 0f); }
+        { 
+            dImg.color = new Color(dImg.color.r, dImg.color.g, dImg.color.b, 0f);
+            dImg.enabled = false;
+        }
 
     }
 
@@ -67,7 +70,12 @@ public class GameplayController : MonoBehaviour
             {
                 tempColor.a -= 0.02f;
                 dImg.color = tempColor;
+                if(tempColor.a <= 0)
+                {
+                    dImg.enabled = false;
+                }
             }
+
         }
 
     }
@@ -84,6 +92,7 @@ public class GameplayController : MonoBehaviour
                 pMove.pKnockback();
                 //makes the damage overlay image visible
                 dImg.color = new Color(dImg.color.r, dImg.color.g, dImg.color.b, 0.3f);
+                dImg.enabled = true;
                 //starts player invuln time
                 damageDelay = 30;
             } else{
