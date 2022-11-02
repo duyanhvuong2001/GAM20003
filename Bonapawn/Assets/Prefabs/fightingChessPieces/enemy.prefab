@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f9a6e9ac2567c49a6892c59dbaec5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   scoreValue: 1
   lastMovePos: {x: 0, y: 0, z: 0}
   stateManager: {fileID: 4361758646067816248}
