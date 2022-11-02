@@ -6,6 +6,11 @@ TagManager:
   tags:
   - attack
   - enemy
+  - heart
+  - PawnNPC
+  - RookNPC
+  - KnightNPC
+  - BishopNPC
   layers:
   - Default
   - TransparentFX

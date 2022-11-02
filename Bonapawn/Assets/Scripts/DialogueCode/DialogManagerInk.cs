@@ -15,7 +15,7 @@ public class DialogManagerInk : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    //[SerializeField] private Text piece;
+    // [SerializeField] private Text piece;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -81,7 +81,6 @@ public class DialogManagerInk : MonoBehaviour
         {
             ContinueStory();
         }
-           
     }
 
     public void EnterDialogueMode(TextAsset InkJSON , string NPCName)
@@ -89,6 +88,7 @@ public class DialogManagerInk : MonoBehaviour
         animator.SetBool("IsOpen", true);
         dialoguePanel.SetActive(true);
         nameText.text = NPCName;
+
         //Debug.Log("works");
         
         currentStory = new Story(InkJSON.text);
@@ -106,7 +106,6 @@ public class DialogManagerInk : MonoBehaviour
         Debug.Log("exit dialogue");
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        
     }
 
     public void ContinueStory()
@@ -172,24 +171,13 @@ public class DialogManagerInk : MonoBehaviour
     }
 
     public void powerUp(string NPCPostion){
-        GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
 
-        int sum = 0;
-        
-    
-        if (NPCPostion == "knight"){
-            //chargers.knightCharges ++;
-            chargers.GetComponent<ChargeManager>().knightCharges ++;
-        }
-        else if (NPCPostion == "bishop"){
-           // chargers.bishopCharges ++;
-           chargers.GetComponent<ChargeManager>().bishopCharges ++;
-        }
-        else if (NPCPostion == "rook"){
-           //chargers.rookCharges ++;
-           chargers.GetComponent<ChargeManager>().rookCharges ++;
-        }
-        else if(NPCPostion == "pawn"){
+        if(NPCPostion == "PawnNPC"){
+
+            //give a heart
+            GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
+
+            int sum = 0;
             for (int i = 0; i < allHearts.Length; i++) 
             {
                 Color a = allHearts[i].GetComponent<Image>().color;
@@ -208,6 +196,19 @@ public class DialogManagerInk : MonoBehaviour
                 Debug.Log(UI.GetComponent<GameplayController>().playerLives);
 
             }
+        }
+    
+        if (NPCPostion == "KnightNPC"){
+            //chargers.knightCharges ++;
+            chargers.GetComponent<ChargeManager>().knightCharges ++;
+        }
+        else if (NPCPostion == "BishopNPC"){
+           // chargers.bishopCharges ++;
+           chargers.GetComponent<ChargeManager>().bishopCharges ++;
+        }
+        else if (NPCPostion == "RookNPC"){
+           //chargers.rookCharges ++;
+           chargers.GetComponent<ChargeManager>().rookCharges ++;
         }
 
 
