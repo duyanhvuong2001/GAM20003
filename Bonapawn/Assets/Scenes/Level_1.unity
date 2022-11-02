@@ -5318,7 +5318,7 @@ MonoBehaviour:
   visualCue: {fileID: 814037879}
   InkJSON: {fileID: 4900000, guid: 52ec273d8fec0ee4da36a5ba48ef3bbf, type: 3}
   name: Tim the Rook
-  piece: rook
+  piece: pawn
 --- !u!61 &271695793
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -106,27 +106,7 @@ public class DialogManagerInk : MonoBehaviour
         Debug.Log("exit dialogue");
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
-
-        int sum = 0;
-        for (int i = 0; i < allHearts.Length; i++) 
-        {
-            Color a = allHearts[i].GetComponent<Image>().color;
-            if(a.a == 1){
-                sum++;
-                Debug.Log(sum);
-            }
-        }
-        if(sum<5){
-            Color c = allHearts[sum].GetComponent<Image>().color;
-            c.a = 1;
-            allHearts[sum].GetComponent<Image>().color = c;
-
-            GameObject UI = GameObject.Find("UI");
-            UI.GetComponent<GameplayController>().playerLives++;
-            Debug.Log(UI.GetComponent<GameplayController>().playerLives);
-
-        }
+        
     }
 
     public void ContinueStory()
@@ -192,6 +172,10 @@ public class DialogManagerInk : MonoBehaviour
     }
 
     public void powerUp(string NPCPostion){
+        GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
+
+        int sum = 0;
+        
     
         if (NPCPostion == "knight"){
             //chargers.knightCharges ++;
@@ -205,6 +189,27 @@ public class DialogManagerInk : MonoBehaviour
            //chargers.rookCharges ++;
            chargers.GetComponent<ChargeManager>().rookCharges ++;
         }
+        else if(NPCPostion == "pawn"){
+            for (int i = 0; i < allHearts.Length; i++) 
+            {
+                Color a = allHearts[i].GetComponent<Image>().color;
+                if(a.a == 1){
+                    sum++;
+                    Debug.Log(sum);
+                }
+            }
+            if(sum<5){
+                Color c = allHearts[sum].GetComponent<Image>().color;
+                c.a = 1;
+                allHearts[sum].GetComponent<Image>().color = c;
+
+                GameObject UI = GameObject.Find("UI");
+                UI.GetComponent<GameplayController>().playerLives++;
+                Debug.Log(UI.GetComponent<GameplayController>().playerLives);
+
+            }
+        }
+
 
     }
 }
