@@ -63,7 +63,7 @@ namespace Assets.Scripts.ChessPieces
                     break;
             }
             currentStateEnum = currentState.UpdateState();
-            Debug.Log(currentStateEnum.ToString());
+            //Debug.Log(currentStateEnum.ToString());
         }
 
 
@@ -71,7 +71,7 @@ namespace Assets.Scripts.ChessPieces
         public void SetState(ENEMY_STATES state)
         {
             currentStateEnum = state;
-            Debug.Log("KNOCKED");
+            //Debug.Log("KNOCKED");
         }
 
 

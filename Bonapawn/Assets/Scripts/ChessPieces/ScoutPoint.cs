@@ -11,7 +11,6 @@ namespace Assets.Scripts.ChessPieces
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("HHHHH");
             if (collision.gameObject.tag == "enemy")
             {
                 collision.gameObject.SendMessage("SwapScoutPoint");

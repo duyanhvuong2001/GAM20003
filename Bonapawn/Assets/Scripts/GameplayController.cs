@@ -26,17 +26,29 @@ public class GameplayController : MonoBehaviour
     public int respawn;
 
     public Image dImg;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        playerLives = maxLives;
+        if(!PlayerPrefs.HasKey("lives") || playerLives == 0){
+            playerLives = maxLives;
+        }
+        displayHearts(playerLives);
+        Debug.Log("HERE: "+playerLives);
         //lifeText.text = lifeOutput + playerLives;
+        
 
         playerObject = GameObject.Find("playerUpdated");
         playerBase = GameObject.Find("base");
         if (playerBase != null)
         { chargeMan = playerBase.GetComponent<ChargeManager>(); }
+
+        if(!PlayerPrefs.HasKey("rook")){
+            chargeMan.rookCharges = 3;
+            chargeMan.knightCharges = 3;
+            chargeMan.bishopCharges = 3;
+        }
 
         if (playerObject != null)
         { pMove = playerObject.GetComponent<PlayerMovement>(); }
@@ -47,9 +59,52 @@ public class GameplayController : MonoBehaviour
             dImg.enabled = false;
         }
 
-        DontDestroyOnLoad(gameObject);
 
     }
+
+    void OnDisable()
+{
+    PlayerPrefs.SetInt("lives", playerLives);
+    PlayerPrefs.SetInt("rook", chargeMan.rookCharges);
+    PlayerPrefs.SetInt("knight", chargeMan.knightCharges);
+    PlayerPrefs.SetInt("bishop", chargeMan.bishopCharges);
+
+}
+
+void OnEnable()
+{
+    playerLives  =  PlayerPrefs.GetInt("lives");
+
+    GameObject playerBase = GameObject.Find("base");
+    if (playerBase != null)
+    { chargeMan = playerBase.GetComponent<ChargeManager>(); }
+    chargeMan.rookCharges = PlayerPrefs.GetInt("rook");
+    chargeMan.knightCharges = PlayerPrefs.GetInt("knight");
+    chargeMan.bishopCharges = PlayerPrefs.GetInt("bishop");
+
+}
+
+private void displayHearts (int playerLives){
+
+    GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
+
+    //Color all hearts < playerLives 
+    for (int i = 0; i < playerLives; i++)
+    {
+        Color c = allHearts[i].GetComponent<Image>().color;
+        c.a = 1;
+        allHearts[i].GetComponent<Image>().color = c;
+    }
+
+    //Decolor all hearts > playerLives 
+    for (int i = playerLives; i < allHearts.Length; i++)
+    {
+        Color c = allHearts[i].GetComponent<Image>().color;
+        c.a = 0;
+        allHearts[i].GetComponent<Image>().color = c;
+    }
+    
+}
 
     // Update is called once per frame
     void FixedUpdate()
@@ -89,15 +144,15 @@ public class GameplayController : MonoBehaviour
         {
 
             //Destroy(hearts[playerLives-1].gameObject);
-
+            playerLives--;
             //Decrease no of displayed hearts
-            Color a = hearts[playerLives-1].gameObject.GetComponent<Image>().color;
+            Debug.Log("HELPPPPP"+playerLives);
+            Color a = hearts[playerLives].gameObject.GetComponent<Image>().color;
             a.a = 0;
-            hearts[playerLives-1].gameObject.GetComponent<Image>().color = a;
+            hearts[playerLives].gameObject.GetComponent<Image>().color = a;
 
-            if(playerLives>1){
-                //reduce lives
-                playerLives--;
+            if(playerLives>0){
+
                 //knocks player back
                 pMove.pKnockback();
                 //makes the damage overlay image visible
@@ -113,6 +168,8 @@ public class GameplayController : MonoBehaviour
                 }
                 respawn = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(respawn);
+                playerLives = maxLives;
+
             }
         }
     }
@@ -124,4 +181,5 @@ public class GameplayController : MonoBehaviour
         bishopText.text = chargeMan.bishopCharges.ToString();
         knightText.text = chargeMan.knightCharges.ToString();
     }
+
 }

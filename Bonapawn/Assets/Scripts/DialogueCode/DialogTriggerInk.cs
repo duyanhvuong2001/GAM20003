@@ -63,8 +63,8 @@ public class DialogTriggerInk : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Debug.Log(" exit trigger");
-            Debug.Log(name);
+            //Debug.Log(" exit trigger");
+            //Debug.Log(name);
             playerInRange = false;
         }
     }

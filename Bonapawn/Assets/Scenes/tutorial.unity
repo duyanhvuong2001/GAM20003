@@ -13366,6 +13366,7 @@ Transform:
   m_Children:
   - {fileID: 789966836}
   - {fileID: 637522669}
+  - {fileID: 1210993341}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15151,6 +15152,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1210993340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1210993341}
+  - component: {fileID: 1210993342}
+  m_Layer: 0
+  m_Name: ManagerHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1210993341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210993340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1008351662}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1210993342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210993340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6920f02812e4599b4734e895a4cccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1239588263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23165,6 +23210,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 738851942, guid: bde4bbf321b82d74aa9aca453e157db3, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009928867, guid: bde4bbf321b82d74aa9aca453e157db3, type: 3}
+      propertyPath: rookCharges
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009928867, guid: bde4bbf321b82d74aa9aca453e157db3, type: 3}
+      propertyPath: bishopCharges
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009928867, guid: bde4bbf321b82d74aa9aca453e157db3, type: 3}
+      propertyPath: knightCharges
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4894513181846213429, guid: bde4bbf321b82d74aa9aca453e157db3,

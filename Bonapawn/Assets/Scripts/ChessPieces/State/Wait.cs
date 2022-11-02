@@ -18,7 +18,7 @@ namespace Assets.Scripts.ChessPieces.State
         {
             if(Time.time - Enemy.lastMove > _moveCD)
             {
-                Debug.Log(_moveCD);
+                // Debug.Log(_moveCD);
                 return ENEMY_STATES.LOCATE_PLAYER;
             }
             else
