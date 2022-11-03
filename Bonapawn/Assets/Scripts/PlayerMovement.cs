@@ -126,9 +126,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void pDash()
     {
+        dashDelay = 8f;
         Adjustment += new Vector3(movement.x, movement.y, 0);
         moveSpeed = 20;
-        dashDelay = 10f;
     }
 
     void dashCheck()
