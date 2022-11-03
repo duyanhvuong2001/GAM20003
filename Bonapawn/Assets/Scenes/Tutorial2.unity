@@ -1963,7 +1963,7 @@ GameObject:
   - component: {fileID: 293102771}
   m_Layer: 0
   m_Name: Pawnee_Combat_Complete
-  m_TagString: Untagged
+  m_TagString: PawnNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2455,7 +2455,7 @@ GameObject:
   - component: {fileID: 345437799}
   m_Layer: 0
   m_Name: Pawnee_Combat_Start
-  m_TagString: Untagged
+  m_TagString: PawnNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

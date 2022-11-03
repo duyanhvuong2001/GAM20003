@@ -6,7 +6,7 @@ Nice work!
     -> next
     
 === next ===  
-You're headed to Rookville to take down their weakest link next. We start from the bottom and move our way up. Don’t be deceived though, Rookie may be simple minded but they pack a punch.
+You're headed to into town to take down their weakest links. We start from the bottom and move our way up. Don’t be deceived though, they may be simple minded but they pack a punch in groups.
 
     *[Hopefully I can pull this off alone]
     -> next2
