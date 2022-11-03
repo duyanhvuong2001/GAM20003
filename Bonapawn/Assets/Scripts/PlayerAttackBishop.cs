@@ -10,6 +10,8 @@ public class PlayerAttackBishop : MonoBehaviour
     public float attackDelayActive = 0f;
     public float charges = 3;
 
+    private AudioSource audioSource;
+
     public GameObject atkObjNE1;
     public GameObject atkObjNE2;
     public GameObject atkObjNE3;
@@ -38,6 +40,8 @@ public class PlayerAttackBishop : MonoBehaviour
         atkObjNW1.SetActive(false);
         atkObjNW2.SetActive(false);
         atkObjNW3.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -100,6 +104,17 @@ public class PlayerAttackBishop : MonoBehaviour
             atkObjSW1.SetActive(true);
             atkObjNW1.SetActive(true);
             attackDurationActive = attackDuration;
+
+            audioSource.pitch = 0.65f;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+
             return true;
         }
         else { return false; }

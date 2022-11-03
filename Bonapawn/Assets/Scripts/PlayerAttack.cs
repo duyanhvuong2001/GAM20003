@@ -101,6 +101,7 @@ public class PlayerAttack : MonoBehaviour
             atkObj2.SetActive(true);
             attackDurationActive = attackDuration;
 
+            audioSource.pitch = 1;
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();

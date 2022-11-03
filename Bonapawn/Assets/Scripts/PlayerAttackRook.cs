@@ -10,6 +10,8 @@ public class PlayerAttackRook : MonoBehaviour
     public float attackDelayActive = 0f;
     public float charges = 3;
 
+    private AudioSource audioSource;
+
     public GameObject atkObjN1;
     public GameObject atkObjN2;
     public GameObject atkObjN3;
@@ -38,6 +40,8 @@ public class PlayerAttackRook : MonoBehaviour
         atkObjW1.SetActive(false);
         atkObjW2.SetActive(false);
         atkObjW3.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -99,6 +103,17 @@ public class PlayerAttackRook : MonoBehaviour
             atkObjS1.SetActive(true);
             atkObjW1.SetActive(true);
             attackDurationActive = attackDuration;
+
+            audioSource.pitch = 0.6f;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+
             return true;
         }
         else { return false; }

@@ -10,6 +10,8 @@ public class PlayerAttackKnight : MonoBehaviour
     public float attackDelayActive = 0f;
     public float charges = 5;
 
+    private AudioSource audioSource;
+
     public GameObject atkObjN1;
     public GameObject atkObjN2;
     public GameObject atkObjE1;
@@ -31,6 +33,8 @@ public class PlayerAttackKnight : MonoBehaviour
         atkObjS2.SetActive(false);
         atkObjW1.SetActive(false);
         atkObjW2.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -79,6 +83,17 @@ public class PlayerAttackKnight : MonoBehaviour
             atkObjW1.SetActive(true);
             atkObjW2.SetActive(true);
             attackDurationActive = attackDuration;
+
+            audioSource.pitch = 0.7f;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+
             return true;
         }
         else { return false; }
