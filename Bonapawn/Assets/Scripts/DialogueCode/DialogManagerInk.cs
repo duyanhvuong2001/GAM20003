@@ -176,14 +176,12 @@ public class DialogManagerInk : MonoBehaviour
 
             //give a heart
             GameObject[] allHearts = GameObject.FindGameObjectsWithTag("heart");
-
             int sum = 0;
             for (int i = 0; i < allHearts.Length; i++) 
             {
                 Color a = allHearts[i].GetComponent<Image>().color;
                 if(a.a == 1){
                     sum++;
-                    Debug.Log(sum);
                 }
             }
             if(sum<5){
@@ -193,8 +191,6 @@ public class DialogManagerInk : MonoBehaviour
 
                 GameObject UI = GameObject.Find("UI");
                 UI.GetComponent<GameplayController>().playerLives++;
-                Debug.Log(UI.GetComponent<GameplayController>().playerLives);
-
             }
         }
     

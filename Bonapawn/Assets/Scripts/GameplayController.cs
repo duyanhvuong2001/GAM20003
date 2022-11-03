@@ -34,10 +34,7 @@ public class GameplayController : MonoBehaviour
         if(!PlayerPrefs.HasKey("lives") || playerLives == 0){
             playerLives = maxLives;
         }
-        displayHearts(playerLives);
-        Debug.Log("HERE: "+playerLives);
-        //lifeText.text = lifeOutput + playerLives;
-        
+        displayHearts(playerLives);       
 
         playerObject = GameObject.Find("playerUpdated");
         playerBase = GameObject.Find("base");
@@ -58,31 +55,29 @@ public class GameplayController : MonoBehaviour
             dImg.color = new Color(dImg.color.r, dImg.color.g, dImg.color.b, 0f);
             dImg.enabled = false;
         }
-
-
     }
 
     void OnDisable()
-{
-    PlayerPrefs.SetInt("lives", playerLives);
-    PlayerPrefs.SetInt("rook", chargeMan.rookCharges);
-    PlayerPrefs.SetInt("knight", chargeMan.knightCharges);
-    PlayerPrefs.SetInt("bishop", chargeMan.bishopCharges);
+    {
+        PlayerPrefs.SetInt("lives", playerLives);
+        PlayerPrefs.SetInt("rook", chargeMan.rookCharges);
+        PlayerPrefs.SetInt("knight", chargeMan.knightCharges);
+        PlayerPrefs.SetInt("bishop", chargeMan.bishopCharges);
 
-}
+    }
 
-void OnEnable()
-{
-    playerLives  =  PlayerPrefs.GetInt("lives");
-
-    GameObject playerBase = GameObject.Find("base");
-    if (playerBase != null)
-    { chargeMan = playerBase.GetComponent<ChargeManager>(); }
-    chargeMan.rookCharges = PlayerPrefs.GetInt("rook");
-    chargeMan.knightCharges = PlayerPrefs.GetInt("knight");
-    chargeMan.bishopCharges = PlayerPrefs.GetInt("bishop");
-
-}
+    void OnEnable()
+    {
+        playerLives  =  PlayerPrefs.GetInt("lives");
+        GameObject playerBase = GameObject.Find("base");
+        if (playerBase != null)
+        { 
+            chargeMan = playerBase.GetComponent<ChargeManager>(); 
+        }
+        chargeMan.rookCharges = PlayerPrefs.GetInt("rook");
+        chargeMan.knightCharges = PlayerPrefs.GetInt("knight");
+        chargeMan.bishopCharges = PlayerPrefs.GetInt("bishop");
+    }
 
 private void displayHearts (int playerLives){
 
@@ -143,10 +138,9 @@ private void displayHearts (int playerLives){
         if (damageDelay <= 0)
         {
 
-            //Destroy(hearts[playerLives-1].gameObject);
             playerLives--;
+
             //Decrease no of displayed hearts
-            Debug.Log("HELPPPPP"+playerLives);
             Color a = hearts[playerLives].gameObject.GetComponent<Image>().color;
             a.a = 0;
             hearts[playerLives].gameObject.GetComponent<Image>().color = a;
