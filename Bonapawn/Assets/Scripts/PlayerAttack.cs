@@ -92,20 +92,24 @@ public class PlayerAttack : MonoBehaviour
 
     void attackNormal()
     {
-        anim.SetTrigger("attack");
-        if (attackDelayActive <= 0f)
+        
+        if (attackDelayActive <= 0f && attackDurationActive <= 0)
         {
+            anim.SetTrigger("attack");
+
             atkObj1.SetActive(true);
             atkObj2.SetActive(true);
             attackDurationActive = attackDuration;
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
         }
-        if (!audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
-        else
-        {
-            audioSource.Stop();
-        }
+        
     }
 }

@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 Adjustment = new Vector3(0,0,0);
     Vector3 AdjustmentTemp = new Vector3(0, 0, 0);
 
+    private float dashDelay = 0f;
+
 
     void Start()
     {
@@ -32,7 +34,14 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!walking)
+        dashCheck();
+
+        if (Input.GetKey(KeyCode.LeftShift) && walking && dashDelay <= 0f)
+        {
+            pDash();
+        }
+
+        if (!walking)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
@@ -71,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
             }
             // anim.SetBool("walking", walking);   
         }
+
+        
     }
 
     IEnumerator Move(Vector3 newPos)
@@ -89,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         transform.position = newPos;
-
+        moveSpeed = 3;
         walking = false;
 
     }
@@ -105,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
         if (walking)
         {
             Adjustment -= transform.right * 3;
+            moveSpeed = 9;
         }
         else
         {
@@ -112,4 +124,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void pDash()
+    {
+        Adjustment += new Vector3(movement.x, movement.y, 0);
+        moveSpeed = 20;
+        dashDelay = 10f;
+    }
+
+    void dashCheck()
+    {
+        if(dashDelay > 0f)
+        {
+            dashDelay -= 0.1f;
+        }
+    }
 }
