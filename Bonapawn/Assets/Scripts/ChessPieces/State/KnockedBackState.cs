@@ -23,6 +23,7 @@ namespace Assets.Scripts.ChessPieces.State
             {
                 Enemy.transform.Translate(Enemy.knockedBackDirection);
                 Enemy.knockedBackDirection = Vector3.Lerp(Enemy.knockedBackDirection, Vector3.zero, Enemy.knockedBackRecoverySpeed);
+                Enemy.KnockedBack(Enemy.knockedBackDirection);
                 return ENEMY_STATES.KNOCKED_BACK;
             }
             else

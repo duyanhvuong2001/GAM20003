@@ -189,7 +189,41 @@ public abstract class ChessPiece : MonoBehaviour
         {
             transform.localScale = new Vector3(1,1,1);
         }
+
         transform.position = Vector3.MoveTowards(transform.position, destination, speed*Time.deltaTime);
+    }
+
+    public void KnockedBack(Vector3 direction)
+    {
+        //Make sure we can move in this direction, by casting a box there first. If the box returns null, then we are free to move!
+        hit = Physics2D.BoxCast(transform.position,
+                                boxCollider.size,
+                                0,
+                                new Vector2(0, direction.y),
+                                Mathf.Abs(direction.y * Time.deltaTime),
+                                LayerMask.GetMask("Blocking"));
+
+        if (!hit.collider)
+        {
+            //Move the player
+            transform.Translate(0, direction.y * Time.deltaTime, 0);
+        }
+
+        //Make sure we can move in this direction, by casting a box there first. If the box returns null, then we are free to move!
+        hit = Physics2D.BoxCast(transform.position,
+                                boxCollider.size,
+                                0,
+                                new Vector2(direction.x, 0),
+                                Mathf.Abs(direction.x * Time.deltaTime),
+                                LayerMask.GetMask("Blocking"));
+
+        if (!hit.collider)
+        {
+            //Move the player
+            transform.Translate(direction.x * Time.deltaTime, 0, 0);
+        }
+
+
     }
 
     protected void SwapScoutPoint()
